@@ -1,0 +1,28 @@
+// STEPS FOR INPUT PROCESSING
+	// Taking inputs from web page to their respective functions.
+
+// Constants:
+  1. Every "Function" a user can create is organized into a sentence based structure, where they fill in the blanks.
+        ie. I would like to *sort* a group of *<UL>'s'*. They will be sorted *Alphabetically*.
+  2. Each distinct function is called an ingredient.
+  3. A page of ingredients is called a recipe.
+
+// Input Processor \\
+
+1. Each ingredient is processed individually.
+2. Once the values of the user inputs are collected they are stored in an array.
+3. Regardless of order displayed to user, data is added to array in standard format.
+    ex.1[Function Type, Function Sub-Type, Param1, Param2, Param3, etc.]
+    ex.2[sortFunction, listSort, AtoZ, .list]
+4. The completed array is passed into a function who's logic works off the most primary param in the array. It will then
+   apply any necessary functions to this level of sorting before passing the array's params (excluding the param which was
+   just evaluated) to a subsequent, more specific function. Every time a piece of javascript is added by the processor it
+   is added to an array, which will hold all the ingredients javascript code.
+    ex1. (if arr[1] === sortFunction) {write standard sort function related to all sorting functions into array}
+5. If a shared prerequisite to a given ingredient is added to the codebase, it will be change a value in an object holding all
+   dependancies to true. This will allow the logic to check if it has already added it somewhere previously.
+6. Once ingredient has gone through the logic and pushed its output to the array, we must sort the functions in order to
+   ensure that all loading functions occur before DOM manipulation. Each array item will hold a value indicating its priority
+   allowing for quick sorting.
+7. The contents of the sorted array which contains all the javascript code is then combined into one variable and written to
+   a brand new .js file. This is then linked and works plug and play for the end user. 
