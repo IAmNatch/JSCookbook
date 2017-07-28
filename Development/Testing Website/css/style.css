@@ -75,7 +75,7 @@ body {
     color: white;
     background-color:black;
     width: 150px;
-    top: 257px;
+    top: 275px;
     left: 655px;
     padding: 15px;
    
@@ -111,7 +111,7 @@ body {
   height: 0; 
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-   top: 243px;
+   top: 260px;
    left: 730px;
   border-bottom: 15px solid black;
    position: absolute;
@@ -178,27 +178,27 @@ li {
 
 .hidden {
     overflow: hidden;
-    /* display: none; */
+     /* display: none;  */
 }
 .box-1 {
-    /* position: absolute; */
-    top: 500px;
-    left: 50px;
-     margin-top: -70px; 
+     position: relative; 
+    top: -85px;
+    left: 0px;
+      /* margin-top: -70px;   */
     
 }
 
 .box-2 {
-    /* position: absolute; */
-    top: 540px;
-    left: 373px;
+     position: relative; 
+    top: -85px;
+    left: 0px;
     
 }
 
 .box-3 {
-    position: absolute;
-    top: 540px;
-    left: 696px;
+    position: relative;
+    top: -85px;
+    left: 0px;
     
 }
 
