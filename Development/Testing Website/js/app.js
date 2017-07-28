@@ -6,14 +6,14 @@ jQuery.fn.clickToggle = function(a,b) {
 };
 
 //Records State of the target element.
-let myClassState = $('.target1').css('display');
+let myClassState = $('.tt-target1').css('display');
 
 //The actual onClick Function. Display none to Display: whatever it used to be.
-$( '.button1' ).clickToggle(
+$( '.tt-button1' ).clickToggle(
     function() {
         //
         console.log(myClassState)
-        $('.target1').css('display', 'none');
+        $('.tt-target1').css('display', 'none');
     }, function() {
-        $('.target1').css('display', myClassState);
+        $('.tt-target1').css('display', myClassState);
     });
