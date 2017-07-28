@@ -1,4 +1,7 @@
 const tooltip = require('tooltip');
+const changeCSS = require('changeCSS');
+const import = require('import');
+const sort = require('sort');
 
 let inputArray = [process.argv[2], process.argv[3], process.argv[4], process.argv[5], process.argv[6]];
 
@@ -11,15 +14,15 @@ function processor (inputArray) {
     }
 
     else if (inputArray[0] === 'change-css') {
-        outputCode += changeCSSGenerator(inputArray);
+        outputCode += changeCSS.changeCSSGenerator(inputArray);
     }
 
     else if (inputArray[0] === 'import') {
-        outputCode += importGenerator(inputArray);
+        outputCode += import.importGenerator(inputArray);
     }
 
     else if (inputArray[0] === 'sort') {
-        outputCode += sortGenerator(inputArray);
+        outputCode += sort.sortGenerator(inputArray);
     }
 
     else {

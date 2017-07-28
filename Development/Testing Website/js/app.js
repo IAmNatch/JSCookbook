@@ -6,22 +6,35 @@ jQuery.fn.clickToggle = function(a,b) {
 };
 
 //Records State of the target element.
-let myClassState = $('#tt-target1').css('display');
+let myClassState = 'block';
 
 //The actual onClick Function. Display none to Display: whatever it used to be.
 $( '#tt-trigger1' ).clickToggle(
     function() {
-        //
-        console.log(myClassState)
-        $('#tt-target1').css('display', 'none');
-    }, function() {
         $('#tt-target1').css('display', myClassState);
+    }, function() {
+        $('#tt-target1').css('display', 'none');
     });
 
 $('#tt-trigger2').on({
     'mouseenter':function(){
-        $('#tt-target2').css('display', 'none')
-    },'mouseleave':function(){
         $('#tt-target2').css('display', myClassState)
+    },'mouseleave':function(){
+        $('#tt-target2').css('display', 'none')
+    }
+});
+
+//Tooltip on Scroll
+//Show's Current Scroll Positon
+$(document).scroll(function () {
+    $('#scroll-position').text($(this).scrollTop());
+});
+
+$(document).scroll(function () {
+    let y = $(this).scrollTop();
+    if (y > 100) {
+        $('#tt-target3').fadeIn();
+    } else {
+        $('#tt-target3').fadeOut();
     }
 });
