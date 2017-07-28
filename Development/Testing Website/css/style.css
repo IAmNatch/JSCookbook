@@ -160,6 +160,7 @@ ul {
     padding: 5px;
     width: 100px;
     box-sizing: border-box;
+        margin: 0;
      /* display: none; */
     
     
@@ -181,14 +182,14 @@ li {
 }
 .box-1 {
     /* position: absolute; */
-    top: 540px;
+    top: 500px;
     left: 50px;
-    margin-top: -100px;
+     margin-top: -70px; 
     
 }
 
 .box-2 {
-    position: absolute;
+    /* position: absolute; */
     top: 540px;
     left: 373px;
     
