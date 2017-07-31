@@ -182,7 +182,7 @@ li {
 }
 .box-1 {
      position: relative; 
-    top: -85px;
+    top: 0px;
     left: 0px;
       /* margin-top: -70px;   */
     
@@ -190,14 +190,14 @@ li {
 
 .box-2 {
      position: relative; 
-    top: -85px;
+    top: 0px;
     left: 0px;
     
 }
 
 .box-3 {
     position: relative;
-    top: -85px;
+    top: 0px;
     left: 0px;
     
 }
