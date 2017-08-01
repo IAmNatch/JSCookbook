@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500');
-
-
+@import url('https://fonts.googleapis.com/css?family=Bungee');
 #tt-target1, #tt-target2, #tt-target3 {
 
     display: none;
@@ -11,6 +10,7 @@ h1{
     font-size: 3.2rem;
     font-family: 'Raleway';
     font-weight: 400;
+
 }
 h2 {
       font-family: 'Raleway';
@@ -19,6 +19,7 @@ h2 {
 
 div.max-width {
      width: 1084px;
+     padding-bottom: 40px;
 }
 
 body {
@@ -182,7 +183,7 @@ li {
 }
 .box-1 {
      position: relative; 
-    top: -85px;
+    top: 0px;
     left: 0px;
       /* margin-top: -70px;   */
     
@@ -190,14 +191,14 @@ li {
 
 .box-2 {
      position: relative; 
-    top: -85px;
+    top: 0px;
     left: 0px;
     
 }
 
 .box-3 {
     position: relative;
-    top: -85px;
+    top: 0px;
     left: 0px;
     
 }
@@ -213,3 +214,34 @@ li {
 display: block;
 }    */
 
+/*CSS FOR THE CHANGE CLASS!!!!!  */
+
+h1.regular {
+
+    font-size: 7rem;
+    font-family: 'Bungee';
+    font-weight: 500;
+     margin: 0;
+
+}
+
+p {
+    text-align: center;
+    font-size: 1.3rem;
+      font-family: 'Raleway';
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+.drop-shadow {
+text-shadow: 8px 8px 0px rgba(0,0,0,0.2);  
+}
+.font-box {
+    background-color: #f9edae;
+    width: 35em;
+     height: 25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border: solid 10px white;
+
+}
