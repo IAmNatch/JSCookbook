@@ -11,7 +11,9 @@ let tooltip = {
             console.log('popup ran!');
             const invisType = inputObject.input[5];
             if (invisType === 'display') {
+                //Testing
                 console.log('display ran!');
+                //Code
                 let stateSelection = inputObject.input[6]
                 const firstF = `let stateSelection = "` + stateSelection + `";
                                 $("` + target + `").css("display", stateSelection);`;
@@ -19,9 +21,34 @@ let tooltip = {
                 let output = [firstF, secondF];
                 return output;
             }
+            else if (invisType === 'opacity') {
+                //Testing
+                console.log('opacity ran!');
+                //Code
+                const firstF = `$("` + target + `").css("opacity", "1");`;
+                const secondF =`$( "` + target + `" ).css("opacity", "0");`;
+                let output = [firstF, secondF];
+                return output;
+            }
+
         }
         else if (inputObject.input[1] === 'dropdown') {
-            console.log('Sorry! dropdowns have not yet been added to our tooltipping feature set!')
+            // Testing
+            console.log('tooltip dropdown module ran!')
+            // Code
+            const firstF = `$('` + target + `').css('top', '0px');`
+            const secondF = `let h = $('` + target + `').css('height');
+            $('` + target + `').css('top', '-' + h);`
+            const whenLoad = `$(window).on('load', function() {
+                $('` + target + `').wrap('<div class="hidden"></div>');
+                $('.hidden').css('overflow', 'hidden');
+
+                let startHeight = $('` + target + `').css('height');
+                $('` + target + `').css('top', '-' + startHeight);
+            });`
+
+            let output = [firstF, secondF, whenLoad];
+            return output;
         }
         else {
             console.log('The tooltip type "' + inputObject[3] + '" is not included in our feature set! Please try again!');

@@ -22,6 +22,11 @@ let trigger = {
 
         let output = [startClick, functionContent[0], middleClick, functionContent[1], endClick];
 
+        if (functionContent[2] !== undefined) {
+            output.unshift(functionContent[2])
+            console.log("unshifted!");
+        }
+
         if (inputObject.repeatCheck.toggleClick === false) {
             output.unshift(JqueryClick);
         }
@@ -47,6 +52,11 @@ let trigger = {
         let functionContent = functionProcessor.functionProcessor(inputObject)
 
         let output = [startHover, functionContent[0], middleHover, functionContent[1], endHover];
+
+        if (functionContent[2] !== undefined) {
+            output.unshift(functionContent[2])
+            console.log("unshifted!");
+        }
 
         let finalOutput = output.join('\n');
         console.log('final output is: \n' + finalOutput);
@@ -80,6 +90,11 @@ let trigger = {
             });`
 
         let functionContent = functionProcessor.functionProcessor(inputObject)
+
+        if (functionContent[2] !== undefined) {
+            output.unshift(functionContent[2])
+            console.log("unshifted!");
+        }
 
         let output = [startScroll, winCondition, functionContent[0], middleScroll, functionContent[1], endScroll];
 

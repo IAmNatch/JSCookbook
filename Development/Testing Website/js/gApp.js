@@ -1,10 +1,15 @@
 $(document).scroll(function () {
     let y = $(this).scrollTop();
-    if (y > 100&& y <180) {
-        let stateSelection = "block";
-        $("#tt-target3").css("display", stateSelection);
+    if (y > 300&& y <600) {
+        $('#class-target1').addClass('drop-shadow');
     }
     else {
-        $( "#tt-target3" ).css('display', 'none');
+        $('#class-target1').removeClass('drop-shadow');
     }
+});
+
+
+// Don't Touch!
+$(document).scroll(function () {
+    $('.scroll-pos').text($(this).scrollTop());
 });

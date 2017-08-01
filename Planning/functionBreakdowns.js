@@ -49,3 +49,27 @@
     // End Function
         }
     });
+
+// Dropdown on Click;
+    // Create Wrapper and Start hidden
+    $(window).on('load', function() {
+        $('#tt-target4').wrap('<div class="hidden"></div>');
+        $('.hidden').css('overflow', 'hidden');
+
+        let startHeight = $('#tt-target4').css('height');
+        $('#tt-target4').css('top', '-' + startHeight);
+    });
+
+    // Start Click Toggle
+    $( '#tt-trigger4' ).clickToggle(
+        function() {
+    // Function
+            let h = $('#tt-target4').css('height');
+            $('#tt-target4').css('top', '0px');
+    // Second Function Start
+        }, function() {
+    // Second Function
+            let h = $('#tt-target4').css('height');
+            $('#tt-target4').css('top', '-' + h);
+    // End Toggle
+        });

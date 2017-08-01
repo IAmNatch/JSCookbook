@@ -1,4 +1,5 @@
 const tooltip = require('./modules/tooltipModule');
+const css = require('./modules/cssModule');
 
 let functionProcessor = {
     functionProcessor (inputArray) {
@@ -12,11 +13,10 @@ let functionProcessor = {
             console.log("function process outoput is: " + outputCode);
             return outputCode;
         }
-        //
-        // else if (inputArray[0] === 'change-css') {
-        //     outputCode = changeCSS.changeCSSGenerator(inputArray);
-        // }
-        //
+        else if (inputArray.input[0] === 'css') {
+            outputCode = css.cssGenerator(inputArray);
+        }
+
         // else if (inputArray[0] === 'import') {
         //     outputCode = import.importGenerator(inputArray);
         // }
