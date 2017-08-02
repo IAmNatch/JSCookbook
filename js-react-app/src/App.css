@@ -22,7 +22,9 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
+form {
+  margin-top: 100px;
+}
 .toggle {
       cursor: pointer;
 }
@@ -33,4 +35,18 @@ a.toggle:hover {
 div.display {
   display: inline-block;
   padding: 10px;
+}
+
+.a.toggle {
+ 
+  /* width: 100px;
+  height: 100px;
+  position: relative; */
+}
+
+ul {
+    position: relative;
+  top: -30px;
+  left: 40px;
+  
 }

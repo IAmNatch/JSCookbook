@@ -66,7 +66,7 @@ class TodoForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
 					<div className="input-group">
            what are you trying to do?
-            <div className="display"> 
+            <span className="display"> 
                 <a className="toggle" onClick={this.show}>  {this.state.type}  </a>
                   <ul>
                     <li style={this.state.display ? displayBlock : displayNone}>
@@ -74,7 +74,7 @@ class TodoForm extends React.Component {
                       <button onClick={this.show}>next</button>
                     </li>
                   </ul>
-            </div>
+            </span>
             <span className="input-group-btn">
 								<button type="submit" value="Submit" className="btn btn-primary">DONE
 									</button>
