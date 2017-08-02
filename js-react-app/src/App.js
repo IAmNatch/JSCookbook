@@ -34,7 +34,7 @@ class TodoForm extends React.Component {
        console.log('You typed: ' + this.state.type); //console.log to test
 	         this.setState(function(){ //once the submition happens, clear the form
 		      return {
-		       	  type: ''
+		       	  // type: ''
 	        	  }
          });
      }
