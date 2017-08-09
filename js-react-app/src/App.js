@@ -88,7 +88,6 @@ class TodoForm extends React.Component {
 }
 
 class Newform extends Component {
-<<<<<<< HEAD
     constructor(){
         super();
 
@@ -310,7 +309,6 @@ class Newform extends Component {
             </div>
         );
     }
-=======
 constructor(){
 		super();
 
@@ -364,8 +362,10 @@ constructor(){
 			</div>
     );
   }
->>>>>>> 31df803c0e82950ce674186ce356f933309f188a
 }
+
+
+
 class FlavorForm extends React.Component {
   constructor(props) {
     super(props);
