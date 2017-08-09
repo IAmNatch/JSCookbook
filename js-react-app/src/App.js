@@ -328,14 +328,7 @@ class FlavorForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: [
-            {
-              question1: '',
-             question2: '',
-              question3: '',
-              question4: ''
-            }
-      ]
+      value: []
     };
 
     this.handleChange = this.handleChange.bind(this);
