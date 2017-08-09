@@ -94,17 +94,17 @@ class Newform extends Component {
 				<form id="nl-form" class="nl-form">
 					Do you want to
 					<select>
-						<option value="1" selected>create </option>
-						<option value="2">Tooltip</option>
-						<option value="3">Sort</option>
-						<option value="4">Change Class</option>
+						<option value="create" selected>create </option>
+						<option value="tooltip">Tooltip</option>
+						<option value="sort">Sort</option>
+						<option value="change-class">Change Class</option>
 					</select> 
 					<br /> That is activated 
 					<select>
-						<option value="1" selected>on</option>
-						<option value="2">Hover</option>
-						<option value="3">Click</option>
-						<option value="4">Scroll</option>
+						<option value="on" selected>on</option>
+						<option value="hover">Hover</option>
+						<option value="click">Click</option>
+						<option value="scroll">Scroll</option>
 					</select>
 					<br />at 
 					<select>
