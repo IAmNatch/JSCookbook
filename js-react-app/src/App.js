@@ -6,7 +6,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       < TodoForm /> 
+       < TodoForm />
+       < Newform /> 
       </div>
     );
   }
@@ -85,5 +86,45 @@ class TodoForm extends React.Component {
   }
 }
 
+class Newform extends Component {
+
+  render() {
+    return (
+      		<div class="main clearfix">
+				<form id="nl-form" class="nl-form">
+					Do you want to
+					<select>
+						<option value="1" selected>create </option>
+						<option value="2">Tooltip</option>
+						<option value="3">Sort</option>
+						<option value="4">Change Class</option>
+					</select> 
+					<br /> That is activated 
+					<select>
+						<option value="1" selected>on</option>
+						<option value="2">Hover</option>
+						<option value="3">Click</option>
+						<option value="4">Scroll</option>
+					</select>
+					<br />at 
+					<select>
+						<option value="1" selected>anytime</option>
+					 	<option value="1">7 p.m.</option>
+					 	<option value="2">8 p.m.</option>
+					 	<option value="3">9 p.m.</option>
+					</select>
+					in <input type="text" value="" placeholder="any city"/>
+					<div class="nl-submit-wrap">
+						<button class="nl-submit" type="submit">Find a restaurant</button>
+					</div>
+					<div class="nl-overlay"></div>
+				</form>
+			</div>
+    );
+  }
+}
+
+
+	
 
 export default App;
