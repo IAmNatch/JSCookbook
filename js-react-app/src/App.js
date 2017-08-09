@@ -204,7 +204,7 @@ class FlavorForm extends React.Component {
       <br />
         <label>
           Pick your favorite color:
-          <select value={this.state.value} onChange={this.handleChange}>
+          <select value={this.state.value.question4} onChange={this.handleChange}>
             <option value="yellow">yellow</option>
             <option value="green">green</option>
             <option value="white">white</option>
