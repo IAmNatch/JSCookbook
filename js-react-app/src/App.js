@@ -8,6 +8,7 @@ class App extends Component {
       <div className="App">
        < TodoForm />
        < Newform />  
+       < Newform />
        <FlavorForm />
       </div>
     );
@@ -316,7 +317,7 @@ constructor(){
 
 		this.state = {
      value: ''
-      
+
          }
       this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -340,15 +341,15 @@ constructor(){
 						<option value="tooltip">Tooltip</option>
 						<option value="sort">Sort</option>
 						<option value="change-class">Change Class</option>
-					</select> 
-					<br /> That is activated 
+					</select>
+					<br /> That is activated
 					<select>
 						<option value="on" >on</option>
 						<option value="hover">Hover</option>
 						<option value="click">Click</option>
 						<option value="scroll">Scroll</option>
 					</select>
-					<br />at 
+					<br />at
 					<select>
 						<option value="1" selected>anytime</option>
 					 	<option value="1">7 p.m.</option>
@@ -386,8 +387,8 @@ class FlavorForm extends React.Component {
 
   handleChange(event) {
     // this.setState({value: event.target.value});
-     var newArray = this.state.value.slice();    
-    newArray.push(event.target.value);   
+     var newArray = this.state.value.slice();
+    newArray.push(event.target.value);
     this.setState({value : newArray})
   }
 
@@ -409,7 +410,7 @@ class FlavorForm extends React.Component {
           </select>
       </label>
        <br />
-        <label> What would you like to do? 
+        <label> What would you like to do?
           <select value={this.state.value.question2} onChange={this.handleChange}>
             <option value="tooltip">tooltip</option>
             <option value="change-class">change class</option>
@@ -417,7 +418,7 @@ class FlavorForm extends React.Component {
           </select>
         </label>
        <br />
-        <label> That is activated 
+        <label> That is activated
         	<select value={this.state.value.question3} onChange={this.handleChange}>
 						<option value="on" >on</option>
 						<option value="hover">Hover</option>
