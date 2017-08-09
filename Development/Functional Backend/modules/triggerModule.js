@@ -2,7 +2,7 @@
 const functionProcessor = require('./../functionProcessor')
 
 let trigger = {
-    click (inputObject) {
+    toggle (inputObject) {
         //Testing
         console.log('trigger click module ran!');
         // Code
@@ -53,6 +53,7 @@ let trigger = {
 
         let output = [startHover, functionContent[0], middleHover, functionContent[1], endHover];
 
+        // Initial Setup (Optional)
         if (functionContent[2] !== undefined) {
             output.unshift(functionContent[2])
             console.log("unshifted!");
@@ -91,6 +92,7 @@ let trigger = {
 
         let functionContent = functionProcessor.functionProcessor(inputObject)
 
+        //Initial Setup (Optional)
         if (functionContent[2] !== undefined) {
             output.unshift(functionContent[2])
             console.log("unshifted!");
@@ -101,9 +103,32 @@ let trigger = {
         let finalOutput = output.join('\n');
         console.log('final output is: \n' + finalOutput);
         return finalOutput;
+    },
+    singleClick (inputObject) {
+        //Testing
+        console.log('Trigger Single Click module ran!');
+        // Code
+        let triggerID = inputObject.input[3];
+        let targetID = inputObject.input[4];
+
+        let startClick = `$( "` + triggerID + `" ).click(function() {`;
+        let endClick = `});`
+
+        let functionContent = functionProcessor.functionProcessor(inputObject)
+
+        let output = [startClick, functionContent[0], endClick];
+
+        //Initial Setup (Optional)
+        if (functionContent[2] !== undefined) {
+            output.unshift(functionContent[2])
+            console.log("unshifted!");
+        }
+
+        let finalOutput = output.join('\n');
+        console.log('final output is: \n' + finalOutput);
+        return finalOutput;
     }
 
-
-}
+};
 
 module.exports = trigger;
