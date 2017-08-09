@@ -8,6 +8,11 @@ class App extends Component {
       <div className="App">
        < TodoForm />
        < Newform />
+       <br />
+       <br />
+       <br />
+       <br />
+       <h1> FORM THAT LOGS TO THE CONSOLE</h1>
        <FlavorForm />
       </div>
     );
@@ -171,7 +176,7 @@ class FlavorForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="nl-form">
         <label>
           Pick your favorite La Croix flavor:
           <select value={this.state.value.question1} onChange={this.handleChange}>
