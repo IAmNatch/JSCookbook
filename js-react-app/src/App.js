@@ -8,6 +8,11 @@ class App extends Component {
       <div className="App">
        < TodoForm />
        < Newform />
+       <br />
+       <br />
+       <br />
+       <br />
+       <h1> FORM THAT LOGS TO THE CONSOLE</h1>
        <FlavorForm />
       </div>
     );
@@ -109,8 +114,8 @@ constructor(){
 
   render() {
     return (
-      		<div class="main clearfix">
-				<form id="nl-form" class="nl-form" onSubmit={this.handleSubmit}>
+      		<div className="main clearfix">
+				<form id="nl-form" className="nl-form" onSubmit={this.handleSubmit}>
 					Do you want to
         <select value={this.state.value} onChange={this.handleChange}>
 						<option value="create" >create </option>
@@ -170,7 +175,7 @@ class FlavorForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="nl-form">
         <label>
           Pick your favorite La Croix flavor:
           <select value={this.state.value.question1} onChange={this.handleChange}>
