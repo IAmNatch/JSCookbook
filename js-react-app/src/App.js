@@ -114,45 +114,7 @@ class Newform extends Component {
       }
   
 
-<<<<<<< HEAD
-  render() {
-    return (
-      		<div className="main clearfix">
-				<form id="nl-form" className="nl-form" onSubmit={this.handleSubmit}>
-					Do you want to
-        <select value={this.state.value} onChange={this.handleChange}>
-						<option value="create" >create </option>
-						<option value="tooltip">Tooltip</option>
-						<option value="sort">Sort</option>
-						<option value="change-class">Change Class</option>
-					</select>
-					<br /> That is activated
-					<select>
-						<option value="on" >on</option>
-						<option value="hover">Hover</option>
-						<option value="click">Click</option>
-						<option value="scroll">Scroll</option>
-					</select>
-					<br />at
-					<select>
-						<option value="1" selected>anytime</option>
-					 	<option value="1">7 p.m.</option>
-					 	<option value="2">8 p.m.</option>
-					 	<option value="3">9 p.m.</option>
-					</select>
-					in <input type="text" value="" placeholder="any city"/>
-					<div class="nl-submit-wrap">
-						<button class="nl-submit" type="submit">Find a restaurant</button>
-					</div>
-					<div class="nl-overlay"></div>
-				</form>
-			</div>
-    );
-  }
-}
-=======
     // componentDidMount() {
->>>>>>> 805df90d221428a6d5974133effb1696a5b481a5
 
         // function myFunction ( window ) {
         //
