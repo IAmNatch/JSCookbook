@@ -3,16 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-<<<<<<< HEAD
-    render() {
-        return (
-            <div className="App">
-            < TodoForm />
-            < Newform />
-            </div>
-        );
-    }
-=======
   render() {
     return (
       <div className="App">
@@ -22,7 +12,6 @@ class App extends Component {
       </div>
     );
   }
->>>>>>> 31df803c0e82950ce674186ce356f933309f188a
 }
 
 class TodoForm extends React.Component {
