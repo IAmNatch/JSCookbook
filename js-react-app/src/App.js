@@ -214,7 +214,7 @@ class FlavorForm extends React.Component {
           </select>
       </label>
 
-        <input type="submit" value="Submit" />
+         <button className="nl-submit" type="submit">submit</button>
       </form>
     );
   }
