@@ -147,12 +147,6 @@ class FlavorForm extends React.Component {
     super(props);
     this.state = {
       value: [
-            {
-              question1: '',
-             question2: '',
-              question3: '',
-              question4: ''
-            }
       ]
     };
 
