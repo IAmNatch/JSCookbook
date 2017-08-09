@@ -95,9 +95,21 @@ class Newform extends Component {
 
         // this.NLForm = this.NLForm.bind(this);
         // this.NLField = this.NLFeild.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+   
+      handleChange(event) {
+      this.setState( {
+          value:  event.target.value});
+      }
+      handleSubmit(event) {
+      console.log('you selected: ' + this.state.value);
+      event.preventDefault();
+      }
+  
 
-    componentDidMount() {
+    // componentDidMount() {
 
         // function myFunction ( window ) {
         //
@@ -273,7 +285,7 @@ class Newform extends Component {
         // }
         //
         // // myFunction(window);
-    }
+    // }
 
     render() {
         return (
@@ -309,61 +321,7 @@ class Newform extends Component {
             </div>
         );
     }
-constructor(){
-		super();
-
-		this.state = {
-     value: ''
-
-         }
-      this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
- }
-   handleChange(event) {
-    this.setState( {
-        value:  event.target.value});
-  }
-    handleSubmit(event) {
-    console.log('you selected: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      		<div class="main clearfix">
-				<form id="nl-form" class="nl-form" onSubmit={this.handleSubmit}>
-					Do you want to
-        <select value={this.state.value} onChange={this.handleChange}>
-						<option value="create" >create </option>
-						<option value="tooltip">Tooltip</option>
-						<option value="sort">Sort</option>
-						<option value="change-class">Change Class</option>
-					</select>
-					<br /> That is activated
-					<select>
-						<option value="on" >on</option>
-						<option value="hover">Hover</option>
-						<option value="click">Click</option>
-						<option value="scroll">Scroll</option>
-					</select>
-					<br />at
-					<select>
-						<option value="1" selected>anytime</option>
-					 	<option value="1">7 p.m.</option>
-					 	<option value="2">8 p.m.</option>
-					 	<option value="3">9 p.m.</option>
-					</select>
-					in <input type="text" value="" placeholder="any city"/>
-					<div class="nl-submit-wrap">
-						<button class="nl-submit" type="submit">Find a restaurant</button>
-					</div>
-					<div class="nl-overlay"></div>
-				</form>
-			</div>
-    );
-  }
 }
-
 
 
 class FlavorForm extends React.Component {
