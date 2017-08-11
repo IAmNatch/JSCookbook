@@ -1,4 +1,4 @@
-        ToolTip Popups
+ToolTip Popups
 // node triggerProcessor.js tooltip popup toggle "#tt-trigger1" "#tt-target1" display block
 // node triggerProcessor.js tooltip popup singeClick "#tt-trigger1" "#tt-target1" display block
 // node triggerProcessor.js tooltip popup hover "#tt-trigger2" "#tt-target2" display block
@@ -6,20 +6,20 @@
 // node triggerProcessor.js tooltip popup toggle "#tt-trigger1" "#tt-target1" opacity
 // node triggerProcessor.js tooltip popup SingleClick "#tt-trigger1" "#tt-target1" opacity
 // node triggerProcessor.js tooltip popup hover "#tt-trigger2" "#tt-target2" opacity
-// node triggerProcessor.js tooltip popup scroll "#tt-trigger3" "#tt-target3" opacity "" 100 180
+// node triggerProcessor.js [tooltip, popup, scroll, "#tt-trigger3", "#tt-target3", opacity, "", 100, 180]
 
 
-        Tooltip Dropdowns
+Tooltip Dropdowns
 // node triggerProcessor.js tooltip dropdown toggle "#tt-trigger4" "#tt-target4"
 // node triggerProcessor.js tooltip dropdown hover "#tt-trigger5" "#tt-target5"
 
-        CSS Add Class
+CSS Add Class
 // node triggerProcessor.js css add toggle "#class-target1" "#class-target1" "drop-shadow"
 // node triggerProcessor.js css add singleClick "#class-target1" "#class-target1" "drop-shadow"
 // node triggerProcessor.js css add hover "#class-target1" "#class-target1" "drop-shadow"
 // node triggerProcessor.js css add scroll "#class-target1" "#class-target1" "drop-shadow" "" 300 400
 
-        CSS Remove Class
+CSS Remove Class
 // node triggerProcessor.js css remove toggle "#class-target1" "#class-target1" "drop-shadow"
 // node triggerProcessor.js css remove singleClick "#class-target1" "#class-target1" "drop-shadow"
 // node triggerProcessor.js css remove hover "#class-target1" "#class-target1" "drop-shadow"
