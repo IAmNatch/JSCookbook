@@ -1,0 +1,20 @@
+//Tooltip
+    1. Whst are you doing
+        tooltip
+    1.1 What type of tooltip
+        popup, dropdown
+    2. How will you trigger?
+        hover, scroll, click, clickToggle
+    3. What is your triggerID
+        STRING/INPUT
+    4. What is your targetID
+        STRING/INPUT
+    ---IF Dropdown dont render more--
+    5. How should we make it disapeaper
+        Opacity, Display:None;
+    5.1 If Displau is picked, what should your target display as
+        block, inline, inline-block, flex
+    -- IF NOT onScroll stop here--
+    6. Start (Optional: End) (10, 20)
+
+//Class Change
