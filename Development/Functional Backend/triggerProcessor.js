@@ -23,7 +23,9 @@ let triggerProcessor = {
         let outputCode = '';
 
         if (inputObject.input[2] === 'toggle') {
+            console.log("I run first!");
             outputCode = trigger.toggle(inputObject);
+            console.log("here's when I run!");
         }
         else if (inputObject.input[2] === 'singleClick') {
             outputCode = trigger.singleClick(inputObject);
