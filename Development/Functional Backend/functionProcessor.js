@@ -4,10 +4,12 @@ const css = require('./modules/cssModule');
 
 let functionProcessor = {
     functionProcessor (inputArray) {
-        //Testing
+        //Testing//
         console.log('function processor ran!');
-        //Code
-        let outputCode = [];
+        //Code//
+
+        // creates output code varable
+        let outputCode = null;
 
         if (inputArray.input[0] === 'tooltip') {
             outputCode = tooltip.toolTipGenerator(inputArray);
@@ -16,6 +18,7 @@ let functionProcessor = {
         }
         else if (inputArray.input[0] === 'css') {
             outputCode = css.cssGenerator(inputArray);
+
         }
 
         // else if (inputArray[0] === 'import') {
@@ -32,6 +35,6 @@ let functionProcessor = {
 
         return outputCode;
     }
-}
+};
 
 module.exports = functionProcessor;
