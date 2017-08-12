@@ -17,26 +17,42 @@ class FlavorForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: {
-        question1: '',
-        question2: '',
-        question3: '',
-      }
+        type: '',
+        tooltip: ''
+      
     };
 
-    // this.handleChange = this.handleChange.bind(this);
+    // this.handleChangeType = this.handleChangeType.bind(this);
+    // this.handleChangeTooltip = this.handleChangeTooltip.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // handleChange(event) {
+  // handleChangeType(event) {
   //   // this.setState({value: event.target.value});
-  //    var newArray = this.state.value.slice();
-  //   newArray.push(event.target.value);
-  //   this.setState({value : newArray})
+  //   //  var newArray = this.state.value.type.slice();
+  //   // newArray.push(event.target.value);
+  //   this.setState({ 
+  //         type:  event.target.type
+  //   })
   // }
+  // handleChangeTooltip(event){
+  //   this.setState({
+      
+  //         tooltip: event.target.tooltip
+      
+  //   })
+  // }
+  handleChange(event){
+    this.setState({
+      type: event.target.type,
+      tooltip: event.target.tooltip
+      
+    })
+  }
 
   handleSubmit(event) {
-   console.log('Your favorite flavor is: ' + this.state.value);
+   console.log(JSON.stringify(this.state));
     event.preventDefault();
   }
 
@@ -45,7 +61,7 @@ class FlavorForm extends React.Component {
       <form onSubmit={this.handleSubmit} className="nl-form" >
         <label>
           What are are you trying to create: 
-          <select value={this.state.value.question1} onChange={this.handleChange}>
+          <select value={this.state.type} onChange={this.handleChange}>
             <option value="do-not-submit">  my event</option>
             <option value="tooltip"> tooltip</option>
             <option value="change-class-name"> change class name</option>
@@ -54,7 +70,7 @@ class FlavorForm extends React.Component {
       </label>
        <br />
         <label> What type of tooltip are you trying to create? 
-          <select value={this.state.value.question2} onChange={this.handleChange}>
+          <select value={this.state.tooltip} onChange={this.handleChange}>
             <option value="do-not-submit">type</option>
             <option value="popups">popup</option>
             <option value="dropdown">dropdown</option>
@@ -62,7 +78,7 @@ class FlavorForm extends React.Component {
         </label>
        <br />
         <label> How would you like it to be triggered on:
-        	<select value={this.state.value.question3} onChange={this.handleChange}>
+        	<select value={this.state.value} onChange={this.handleChange}>
 						<option value="do-not-submit" > trigger type</option>
 						<option value="hover">hover</option>
 						<option value="click">click</option>
@@ -83,7 +99,7 @@ class FlavorForm extends React.Component {
       </label>
         <br />
         <label> How would you like to make is disapear:
-        	<select value={this.state.value.question6} onChange={this.handleChange}>
+        	<select value={this.state.value} onChange={this.handleChange}>
 						<option value="do-not-submit" > options</option>
 						<option value="opacity">opacity</option>
 						<option value="dislay: none">dislay: none</option>
@@ -91,7 +107,7 @@ class FlavorForm extends React.Component {
         </label>
         <br />
         <label> What Display value would you like to use?
-        	<select value={this.state.value.question7} onChange={this.handleChange}>
+        	<select value={this.state.value} onChange={this.handleChange}>
 						<option value="do-not-submit" > options</option>
 						<option value="block">block</option>
 						<option value="inline">inline</option>
