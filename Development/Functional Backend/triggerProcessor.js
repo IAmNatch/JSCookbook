@@ -25,16 +25,19 @@ let triggerProcessor = {
         if (inputObject.input[2] === 'toggle') {
             console.log("I run first!");
             outputCode = trigger.toggle(inputObject);
-            console.log("here's when I run!");
+            return outputCode;
         }
         else if (inputObject.input[2] === 'singleClick') {
             outputCode = trigger.singleClick(inputObject);
+            return outputCode;
         }
         else if (inputObject.input[2] === 'hover') {
             outputCode = trigger.hover(inputObject);
+            return outputCode;
         }
         else if (inputObject.input[2] === 'scroll') {
             outputCode = trigger.scroll(inputObject);
+            return outputCode;
         }
         else {
             console.log('The trigger "' + inputObject.input[2] + '" is not included in our feature set! Please try again!');

@@ -1,16 +1,22 @@
 const trigger = require('./triggerProcessor');
+const exporter = require('./modules/dotJSMaker')
 
-let inputObj = {
-    input : [process.argv[2], process.argv[3], process.argv[4], process.argv[5], process.argv[6], process.argv[7], process.argv[8], process.argv[9], process.argv[10]],
-    repeatCheck : {
-        toggleClick: false
-    }
-};
+// Old input Object
+// let inputObj = {
+//     input : [process.argv[2], process.argv[3], process.argv[4], process.argv[5], process.argv[6], process.argv[7], process.argv[8], process.argv[9], process.argv[10]],
+//     repeatCheck : {
+//         toggleClick: false
+//     }
+// };
+
 
 let inputProcessor = {
     inputProcessor (inputArray) {
+        // Loops through all of the input sets, starting the code building process once per a input set.
+        let outputArray = [];
+
         for (let i = 0; i < inputArray.length; i++) {
-            //Creates Array of inputs
+            //Creates Array of inputs -- This will be removed once we're using a more complex object for communication
             let toTrigger = {
                 repeatCheck : {
                     toggleClick: false
@@ -26,9 +32,11 @@ let inputProcessor = {
                     inputArray[i].TriggerParam,
                     inputArray[i].TriggerParamTwo
                 ]};
-            // Run trigger Processor
-            trigger.triggerProcessor(toTrigger);
+            // Run trigger Processor and put it's result to outputArray
+            outputArray.push(trigger.triggerProcessor(toTrigger));
         }
+        console.log("Passing output array into Maker!");
+        exporter.dotJSMaker(outputArray);
 
     }
 };
@@ -42,6 +50,7 @@ let serverInput = [{functionType : process.argv[2],
     generalParamTwo: process.argv[8],
     triggerParam: process.argv[9],
     triggerParamTwo: process.argv[10]}];
+// Runs input Processor with all the ArgV's.
 inputProcessor.inputProcessor(serverInput);
 
 
