@@ -6,15 +6,29 @@
     2. How will you trigger?
         options--> hover, scroll, click, clickToggle
     3. What is your triggerID
-        options --> input box STRING/INPUT
+        options --> input box plus # or .
     4. What is your targetID
-        options--> input box STRING/INPUT
-    ---IF Dropdown dont render more--
-    5. How should we make it disapeaper
-        otpions --> Opacity, Display:None;
+        options --> input box plus # or .
+    ---IF Dropdown don't render more--
+    5. How should we make it disappear
+        options --> Opacity, Display:None;
     5.1 If Display is picked, what should your target display as
         Display= block, inline, inline-block, flex
     -- IF NOT onScroll stop here--
     6. Start (for sure)(Optional: End) ((start)10, (end) 20) # or %
 
 //Class Change
+    1. What are you doing?
+        (only if they select css) ClassName (but should return "css")
+    2. What type of className Change?
+        options: add, remove
+    3. Trigger Type:
+        hover, scroll, click, clickToggle
+    4. trigger ID
+        options: input box plus # or .
+    5. target ID
+        options --> input box plus # or .
+    6. name of class
+        options --> input box (no .)
+    [No tree on this one at all!]
+//Import        
