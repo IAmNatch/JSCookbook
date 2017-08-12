@@ -100,6 +100,7 @@ ul {
 	color: #b14943;
 	cursor: pointer;
 	border-bottom: 1px dashed #b14943;
+	padding-left: 15px;
 }
 
 
@@ -153,7 +154,18 @@ body {
 	overflow-x: hidden;
 }
 
-form select:focus, form button:focus {
+form select:focus, form button:focus, form input {
   border: none;
   outline:none;
+}
+
+form input {
+	width: 20%;
+}
+.extra-info {
+	font-size: 29px;
+	line-height: 1;
+}
+.extra-info p {
+	line-height: 1;
 }
