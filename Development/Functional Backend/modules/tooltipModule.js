@@ -2,14 +2,14 @@ let tooltip = {
 
     toolTipGenerator(inputObject) {
         //Testing
-        console.log("tooltip module ran!");
+        console.log('tooltip module ran!');
         //Code
-        const trigger = inputObject.input[3];
-        const target = inputObject.input[4];
+        const trigger = inputObject.input.triggerID;
+        const target = inputObject.input.targetID;
 
-        if (inputObject.input[1] === 'popup') {
+        if (inputObject.input.functionSubType === 'popup') {
             console.log('popup ran!');
-            const invisType = inputObject.input[5];
+            const invisType = inputObject.generalParam;
             if (invisType === 'display') {
                 //Testing
                 console.log('display ran!');
@@ -32,7 +32,7 @@ let tooltip = {
             }
 
         }
-        else if (inputObject.input[1] === 'dropdown') {
+        else if (inputObject.input.functionSubType === 'dropdown') {
             // Testing
             console.log('tooltip dropdown module ran!')
             // Code
@@ -45,13 +45,13 @@ let tooltip = {
 
                 let startHeight = $('` + target + `').css('height');
                 $('` + target + `').css('top', '-' + startHeight);
-            });`
+            });`;
 
             let output = [firstF, secondF, whenLoad];
             return output;
         }
         else {
-            console.log('The tooltip type "' + inputObject[3] + '" is not included in our feature set! Please try again!');
+            console.log('The tooltip type "' + inputObject.input.functionSubType + '" is not included in our feature set! Please try again!');
         }
     }
 };

@@ -3,11 +3,11 @@ let updateText = {
         //Testing
         console.log('Update text module ran!');
         //Code
-        const trigger = inputObject.input[3];
-        const target = inputObject.input[4];
+        const trigger = inputObject.input.triggerID;
+        const target = inputObject.input.targetID;
 
-        if (inputObject.input[1] === "add") {
-            let newText = inputObject.input[5];
+        if (inputObject.input.functionSubType === "add") {
+            let newText = inputObject.input.generalParam;
             let firstF = `let newText = "` + newText + `";
             $("` + target +`").text(newText);`;
             let secondF = `$( "` + target +`" ).text(ogText);`;

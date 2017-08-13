@@ -6,8 +6,8 @@ let trigger = {
         //Testing
         console.log('trigger click module ran!');
         // Code
-        let triggerID = inputObject.input[3];
-        let targetID = inputObject.input[4];
+        let triggerID = inputObject.input.triggerID;
+        let targetID = inputObject.input.targetID;
 
         let JqueryClick = `jQuery.fn.clickToggle = function(a,b) {
             function cb(){ [b,a][this._tog^=1].call(this); }
@@ -55,8 +55,8 @@ let trigger = {
         console.log('trigger hover module ran!');
         //Code
 
-        let triggerID = inputObject.input[3];
-        let targetID = inputObject.input[4];
+        let triggerID = inputObject.input.triggerID;
+        let targetID = inputObject.input.targetID;
 
         // Self executing anonymous function. Beggining and End. Could be moved higher up to avoid writing every time.
         let wrapper = [`(function (){`, `})()`]
@@ -89,10 +89,10 @@ let trigger = {
         //Testing
         console.log('trigger scroll module ran!');
         // Code
-        let triggerID = inputObject.input[3];
-        let targetID = inputObject.input[4];
-        let scrollStart = inputObject.input[7];
-        let scrollEnd = inputObject.input[8];
+        let triggerID = inputObject.input.triggerID;
+        let targetID = inputObject.input.targetID;
+        let scrollStart = inputObject.input.triggerParam;
+        let scrollEnd = inputObject.input.triggerParamTwo;
 
         // Self executing anonymous function. Beggining and End. Could be moved higher up to avoid writing every time.
         let wrapper = [`(function (){`, `})()`]
@@ -136,8 +136,8 @@ let trigger = {
         //Testing
         console.log('Trigger Single Click module ran!');
         // Code
-        let triggerID = inputObject.input[3];
-        let targetID = inputObject.input[4];
+        let triggerID = inputObject.input.triggerID;
+        let targetID = inputObject.input.targetID;
 
         // Self executing anonymous function. Beggining and End. Could be moved higher up to avoid writing every time.
         let wrapper = [`(function (){`, `})()`]

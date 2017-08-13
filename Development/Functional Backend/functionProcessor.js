@@ -13,30 +13,30 @@ let functionProcessor = {
         // creates output code varable
         let outputCode = null;
 
-        if (inputObject.input[0] === 'tooltip') {
+        if (inputObject.input.functionType === 'tooltip') {
             outputCode = tooltip.toolTipGenerator(inputObject);
             // console.log("function process outoput is: " + outputCode);
             return outputCode;
         }
-        else if (inputObject.input[0] === 'css') {
+        else if (inputObject.input.functionType === 'css') {
             outputCode = css.cssGenerator(inputObject);
             return outputCode;
 
         }
-        else if (inputObject.input[0] === 'updateText') {
+        else if (inputObject.input.functionType === 'updateText') {
             outputCode = updateText.updateTextGenerater(inputObject);
             return outputCode;
         }
-        // else if (inputObject[0] === 'import') {
+        // else if (inputObject.functionType === 'import') {
         //     outputCode = importer.importGenerator(inputObject);
         // }
         //
-        // else if (inputObject[0] === 'sort') {
+        // else if (inputObject.functionType === 'sort') {
         //     outputCode = sort.sortGenerator(inputObject);
         // }
 
         else {
-            console.log('The function "' + inputObject.input[0] + '" is not included in our feature set! Please try again!');
+            console.log('The function "' + inputObject.input.functionType + '" is not included in our feature set! Please try again!');
         }
 
         return outputCode;
