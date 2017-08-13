@@ -155,13 +155,6 @@ class Test extends React.Component {
   render(){
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="nl-form">
-              <label> Name:
-                  <input type="text" name="name" placeholder="Name" value={this.state.formValues["name"]} onChange={this.handleChange.bind(this)} />
-              </label><br />
-              <label> Email:
-                  <input type="text" name="email" placeholder="Email" value={this.state.formValues["email"]} onChange={this.handleChange.bind(this)}/>
-              </label>
-              <br />
           <label>
           What are are you trying to create: 
           <select  name="event-type" value={this.state.formValues["event-type"]} onChange={this.handleChange.bind(this)}>
