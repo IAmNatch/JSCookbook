@@ -61,7 +61,7 @@ class Test extends React.Component {
           </select>
         </label>
         <br />
-        <label style={{display: this.state.formValues["type"]  ? 'inline-block' : 'none' }}> How would you like it to be triggered on:
+        <label style={{display: this.state.formValues["type"] &&  this.state.formValues["event-type"] === 'tooltip'  ? 'inline-block' : 'none' }}> How would you like it to be triggered on:
         	<select name="trigger"  value={this.state.formValues["trigger"]} onChange={this.handleChange.bind(this)}>
 						<option value="do-not-submit" > trigger type</option>
 						<option value="hover">hover</option>
@@ -71,18 +71,18 @@ class Test extends React.Component {
 					</select>
         </label>
       <br />
-        <label style={{display: this.state.formValues["trigger"] ? 'inline-block' : 'none' }}>
+        <label style={{display: this.state.formValues["trigger"] &&  this.state.formValues["event-type"] === 'tooltip' ? 'inline-block' : 'none' }}>
           What is your TRIGGER ID or Class: 
           <input type="text" name="trigger-id-class"  value={this.state.formValues["trigger-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
         <br />
       
-        <label style={{display: this.state.formValues["trigger-id-class"] ? 'inline-block' : 'none' }}>
+        <label style={{display: this.state.formValues["trigger-id-class"] &&  this.state.formValues["event-type"] === 'tooltip'? 'inline-block' : 'none' }}>
           What is your TARGET ID or Class: 
           <input type="text" name="target-id-class" value={this.state.formValues["target-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
       <br />
-        <label style={{display: this.state.formValues["target-id-class"] ? 'inline-block' : 'none' }}> How would you like to make is disapear:
+        <label style={{display: this.state.formValues["target-id-class"] &&  this.state.formValues["event-type"] === 'tooltip' ? 'inline-block' : 'none' }}> How would you like to make is disapear:
         	<select name="disapaer" value={this.state.formValues["disapaer"]} onChange={this.handleChange.bind(this)}>
 						<option value="do-not-submit" > options</option>
 						<option value="opacity">opacity</option>
@@ -90,7 +90,7 @@ class Test extends React.Component {
 					</select>
         </label>
         <br />
-        <label style={{display: this.state.formValues["disapaer"] ? 'inline-block' : 'none' }}>  What Display value would you like to use?
+        <label style={{display: this.state.formValues["disapaer"] &&  this.state.formValues["event-type"] === 'tooltip' ? 'inline-block' : 'none' }}>  What Display value would you like to use?
         	<select name="disapaer-value" value={this.state.formValues["disapaer-value"]} onChange={this.handleChange.bind(this)}>
 						<option value="do-not-submit" > options</option>
 						<option value="block">block</option>
@@ -100,12 +100,12 @@ class Test extends React.Component {
 					</select>
         </label>
         <br />
-        <label style={{display:  this.state.formValues["disapaer-value"] ? 'inline-block' : 'none' }}> Starting and ending(optional) value for Scroll ? <br />
+        <label style={{display:  this.state.formValues["disapaer-value"]  &&  this.state.formValues["event-type"]  === 'tooltip' ? 'inline-block' : 'none' }}> Starting and ending(optional) value for Scroll ? <br />
           <span>Starting value: <input type="text" name="scroll-start"  value={this.state.formValues["scroll-start"]} onChange={this.handleChange.bind(this)} required/></span> <br />
           <span>Ending value (optional): <input type="text" name="scroll-end"  value={this.state.formValues["scroll-end"]} onChange={this.handleChange.bind(this)} /></span>
         </label>
         <br />
-        <button style={{display:  this.state.formValues["scroll-start"] ? 'inline-block' : 'none' }} className="nl-submit" type="submit">submit</button>
+        <button style={{display:  this.state.formValues["scroll-start"]  ? 'inline-block' : 'none' }} className="nl-submit" type="submit">submit</button>
          </form>
     )
   }
