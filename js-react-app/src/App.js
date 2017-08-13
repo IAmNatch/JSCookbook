@@ -185,13 +185,13 @@ class Test extends React.Component {
       <br />
         <label>
           What is your TRIGGER ID or Class: 
-          <input type="text" name="trigger-id-class" placeholder="Name" value={this.state.formValues["trigger-id-class"]} onChange={this.handleChange.bind(this)} />
+          <input type="text" name="trigger-id-class"  value={this.state.formValues["trigger-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
         <br />
       
         <label>
           What is your TARGET ID or Class: 
-          <input type="text" name="target-id-class" placeholder="Name" value={this.state.formValues["target-id-class"]} onChange={this.handleChange.bind(this)} />
+          <input type="text" name="target-id-class" value={this.state.formValues["target-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
       <br />
         <label> How would you like to make is disapear:
@@ -213,8 +213,8 @@ class Test extends React.Component {
         </label>
         <br />
         <label> Starting and ending(optional) value for Scroll ? <br />
-          <span>Starting value: <input type="text" name="scroll-start" placeholder="Name" value={this.state.formValues["scroll-start"]} onChange={this.handleChange.bind(this)} required/></span> <br />
-          <span>Ending value (optional): <input type="text" name="scroll-end" placeholder="Name" value={this.state.formValues["scroll-end"]} onChange={this.handleChange.bind(this)} /></span>
+          <span>Starting value: <input type="text" name="scroll-start"  value={this.state.formValues["scroll-start"]} onChange={this.handleChange.bind(this)} required/></span> <br />
+          <span>Ending value (optional): <input type="text" name="scroll-end"  value={this.state.formValues["scroll-end"]} onChange={this.handleChange.bind(this)} /></span>
         </label>
         <br />
         <button className="nl-submit" type="submit">submit</button>
