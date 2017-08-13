@@ -84,7 +84,8 @@ class Test extends React.Component {
       <br />
         <label style={{display: this.state.formValues["target-id-class"] &&  this.state.formValues["event-type"] === 'tooltip' ? 'inline-block' : 'none' }}> How would you like to make is disapear:
         	<select name="disapaer" value={this.state.formValues["disapaer"]} onChange={this.handleChange.bind(this)}>
-						<option value="do-not-submit" > options</option>
+			
+    			<option value="do-not-submit" > options</option>
 						<option value="opacity">opacity</option>
 						<option value="dislay: none">dislay: none</option>
 					</select>
