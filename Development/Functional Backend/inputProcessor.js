@@ -1,5 +1,5 @@
 const trigger = require('./triggerProcessor');
-const exporter = require('./modules/dotJSMaker')
+const exporter = require('./modules/dotJSMaker');
 
 // Old input Object
 // let inputObj = {
@@ -21,37 +21,16 @@ let inputProcessor = {
                 repeatCheck : {
                     toggleClick: false
                 },
-                input : [
-                    inputArray[i].functionType,
-                    inputArray[i].functionSubType,
-                    inputArray[i].triggerType,
-                    inputArray[i].triggerID,
-                    inputArray[i].targetID,
-                    inputArray[i].generalParam,
-                    inputArray[i].generalParamTwo,
-                    inputArray[i].TriggerParam,
-                    inputArray[i].TriggerParamTwo
-                ]};
+                input : inputArray[i]};
             // Run trigger Processor and put it's result to outputArray
+            console.log(toTrigger.input);
             outputArray.push(trigger.triggerProcessor(toTrigger));
         }
-        console.log("Passing output array into Maker!");
+        console.log('Passing output array into Maker!');
         exporter.dotJSMaker(outputArray);
 
     }
 };
-
-let serverInput = [{functionType : process.argv[2],
-    functionSubType : process.argv[3],
-    triggerType: process.argv[4],
-    triggerID: process.argv[5],
-    targetID: process.argv[6],
-    generalParam: process.argv[7],
-    generalParamTwo: process.argv[8],
-    triggerParam: process.argv[9],
-    triggerParamTwo: process.argv[10]}];
-// Runs input Processor with all the ArgV's.
-inputProcessor.inputProcessor(serverInput);
 
 
 module.exports = inputProcessor;

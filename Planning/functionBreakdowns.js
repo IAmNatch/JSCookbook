@@ -73,3 +73,24 @@
             $('#tt-target4').css('top', '-' + h);
     // End Toggle
         });
+
+//Update Text Function
+// Jquery Toggle Click
+jQuery.fn.clickToggle = function(a,b) {
+            function cb(){ [b,a][this._tog^=1].call(this); }
+            return this.on("click", cb);
+        };
+
+// Saves original Text State
+let ogText = $('#text-target1').text()
+// Start Click
+$( "#text-trigger1" ).clickToggle(
+            function() {
+// Start Function
+let newText = "I am lonnnnger text!";
+            $("#text-target1").text(newText);
+// Second Function
+}, function() {
+//Start Second Function
+$( "#text-target1" ).text(ogText);
+});

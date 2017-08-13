@@ -22,25 +22,24 @@ let triggerProcessor = {
         // Code
         let outputCode = '';
 
-        if (inputObject.input[2] === 'toggle') {
-            console.log("I run first!");
+        if (inputObject.input.triggerType === 'toggle') {
             outputCode = trigger.toggle(inputObject);
             return outputCode;
         }
-        else if (inputObject.input[2] === 'singleClick') {
+        else if (inputObject.input.triggerType === 'singleClick') {
             outputCode = trigger.singleClick(inputObject);
             return outputCode;
         }
-        else if (inputObject.input[2] === 'hover') {
+        else if (inputObject.input.triggerType === 'hover') {
             outputCode = trigger.hover(inputObject);
             return outputCode;
         }
-        else if (inputObject.input[2] === 'scroll') {
+        else if (inputObject.input.triggerType === 'scroll') {
             outputCode = trigger.scroll(inputObject);
             return outputCode;
         }
         else {
-            console.log('The trigger "' + inputObject.input[2] + '" is not included in our feature set! Please try again!');
+            console.log('The trigger "' + inputObject.input.triggerType + '" is not included in our feature set! Please try again!');
         }
     }
 };
