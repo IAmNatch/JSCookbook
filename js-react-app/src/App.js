@@ -19,7 +19,7 @@ class App extends Component {
 //     this.state = {
 //         type: '',
 //         tooltip: ''
-      
+
 //     };
 
 //     // this.handleChangeType = this.handleChangeType.bind(this);
@@ -32,22 +32,22 @@ class App extends Component {
 //   //   // this.setState({value: event.target.value});
 //   //   //  var newArray = this.state.value.type.slice();
 //   //   // newArray.push(event.target.value);
-//   //   this.setState({ 
+//   //   this.setState({
 //   //         type:  event.target.type
 //   //   })
 //   // }
 //   // handleChangeTooltip(event){
 //   //   this.setState({
-      
+
 //   //         tooltip: event.target.tooltip
-      
+
 //   //   })
 //   // }
 //   handleChangeTooltip(event){
 //     this.setState({
-      
+
 //       tooltip: event.target.tooltip
-      
+
 //     })
 //   }
 
@@ -60,7 +60,7 @@ class App extends Component {
 //     return (
 //       <form onSubmit={this.handleSubmit} className="nl-form" >
 //         <label>
-//           What are are you trying to create: 
+//           What are are you trying to create:
 //           <select value={this.state.type} onChange={this.handleChange}>
 //             <option value="do-not-submit">  my event</option>
 //             <option value="tooltip"> tooltip</option>
@@ -69,7 +69,7 @@ class App extends Component {
 //           </select>
 //       </label>
 //        <br />
-//         <label> What type of tooltip are you trying to create? 
+//         <label> What type of tooltip are you trying to create?
 //           <select value={this.state.tooltip} onChange={this.handleChangeTooltip}>
 //             <option value="do-not-submit">type</option>
 //             <option value="popups">popup</option>
@@ -88,13 +88,13 @@ class App extends Component {
 //         </label>
 //       <br />
 //         <label>
-//           What is your TRIGGER ID or Class: 
+//           What is your TRIGGER ID or Class:
 //           <input type="text" value={this.state.text} required/>
 //       </label>
 //         <br />
-      
+
 //         <label>
-//           What is your TARGET ID or Class: 
+//           What is your TARGET ID or Class:
 //           <input type="text" value={this.state.text} required/>
 //       </label>
 //         <br />
@@ -143,22 +143,22 @@ class Test extends React.Component {
       let formValues = this.state.formValues;
       let name = event.target.name;
       let value = event.target.value;
-    
+
       formValues[name] = value;
-      
+
       this.setState({formValues})
   }
-  
+
   handleSubmit(event) {
       event.preventDefault();
       console.log(this.state.formValues);
   }
-  
+
   render(){
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="nl-form">
           <label>
-          What are are you trying to create: 
+          What are are you trying to create:
           <select  name="event-type" value={this.state.formValues["event-type"]} onChange={this.handleChange.bind(this)}>
             <option value="do-not-submit">  my event</option>
             <option value="tooltip"> tooltip</option>
@@ -167,7 +167,7 @@ class Test extends React.Component {
           </select>
       </label>
       <br />
-        <label style={{display: this.state.formValues["event-type"] ? 'inline-block' : 'none' }}> What type of tooltip are you trying to create? 
+        <label style={{display: this.state.formValues["event-type"] ? 'inline-block' : 'none' }}> What type of tooltip are you trying to create?
           <select name="type"  value={this.state.formValues["type"]} onChange={this.handleChange.bind(this)}>
             <option value="do-not-submit">type</option>
             <option value="popups">popup</option>
@@ -186,13 +186,13 @@ class Test extends React.Component {
         </label>
       <br />
         <label style={{display: this.state.formValues["trigger"] ? 'inline-block' : 'none' }}>
-          What is your TRIGGER ID or Class: 
+          What is your TRIGGER ID or Class:
           <input type="text" name="trigger-id-class"  value={this.state.formValues["trigger-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
         <br />
-      
+
         <label style={{display: this.state.formValues["trigger-id-class"] ? 'inline-block' : 'none' }}>
-          What is your TARGET ID or Class: 
+          What is your TARGET ID or Class:
           <input type="text" name="target-id-class" value={this.state.formValues["target-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
       <br />
