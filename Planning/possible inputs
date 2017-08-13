@@ -24,3 +24,9 @@
 // node inputProcessor.js css remove singleClick "#class-target1" "#class-target1" "drop-shadow"
 // node inputProcessor.js css remove hover "#class-target1" "#class-target1" "drop-shadow"
 // node inputProcessor.js css remove scroll "#class-target1" "#class-target1" "drop-shadow" "" 300 400
+
+        Update Text
+// node inputProcessor.js updateText add toggle "#text-trigger1" "#text-target1" 'I am lonnnnger text!'
+// node inputProcessor.js updateText add singleClick "#text-trigger1" "#text-target1" 'I am lonnnnger text!'
+// node inputProcessor.js updateText add hover "#text-trigger1" "#text-target1" 'I am lonnnnger text!'
+// node inputProcessor.js updateText add scroll "#text-trigger1" "#text-target1" 'I am lonnnnger text!' "" 1100 1200
