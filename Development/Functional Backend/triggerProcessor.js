@@ -23,7 +23,6 @@ let triggerProcessor = {
         let outputCode = '';
 
         if (inputObject.input[2] === 'toggle') {
-            console.log("I run first!");
             outputCode = trigger.toggle(inputObject);
             return outputCode;
         }

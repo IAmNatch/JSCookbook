@@ -1,9 +1,11 @@
 const tooltip = require('./modules/tooltipModule');
 const css = require('./modules/cssModule');
+const updateText = require('./modules/updateTextModule');
+// const importer = require('./modules/importModule')
 
 
 let functionProcessor = {
-    functionProcessor (inputArray) {
+    functionProcessor (inputObject) {
         //Testing//
         console.log('function processor ran!');
         //Code//
@@ -11,26 +13,30 @@ let functionProcessor = {
         // creates output code varable
         let outputCode = null;
 
-        if (inputArray.input[0] === 'tooltip') {
-            outputCode = tooltip.toolTipGenerator(inputArray);
+        if (inputObject.input[0] === 'tooltip') {
+            outputCode = tooltip.toolTipGenerator(inputObject);
             // console.log("function process outoput is: " + outputCode);
             return outputCode;
         }
-        else if (inputArray.input[0] === 'css') {
-            outputCode = css.cssGenerator(inputArray);
+        else if (inputObject.input[0] === 'css') {
+            outputCode = css.cssGenerator(inputObject);
+            return outputCode;
 
         }
-
-        // else if (inputArray[0] === 'import') {
-        //     outputCode = import.importGenerator(inputArray);
+        else if (inputObject.input[0] === 'updateText') {
+            outputCode = updateText.updateTextGenerater(inputObject);
+            return outputCode;
+        }
+        // else if (inputObject[0] === 'import') {
+        //     outputCode = importer.importGenerator(inputObject);
         // }
         //
-        // else if (inputArray[0] === 'sort') {
-        //     outputCode = sort.sortGenerator(inputArray);
+        // else if (inputObject[0] === 'sort') {
+        //     outputCode = sort.sortGenerator(inputObject);
         // }
 
         else {
-            console.log('The function "' + inputArray.input[0] + '" is not included in our feature set! Please try again!');
+            console.log('The function "' + inputObject.input[0] + '" is not included in our feature set! Please try again!');
         }
 
         return outputCode;
