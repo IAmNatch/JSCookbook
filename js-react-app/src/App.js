@@ -16,10 +16,21 @@ class Home extends Component {
     return (
       <div className="hello">
         <div className="title-logo">
+          <div className="title">
        <h1> <span className="front-page-header"><i>JavaScript </i></span><br /><span className="header-title">  COOKBOOK</span></h1>
+       <p>Easily add custom JavaScript and Jquery recipies to your website, without the bulk and documentation. Create custom recipies for any project. </p>
+         </div>
        <div className="cookbook-holder">
+         <div className="book">
        <img src="cookbook.svg" />
        </div>
+       {/* <div className="gloves">
+       <img src="cooking-gloves.svg" />
+       </div> */}
+       </div>
+
+       <button> Home </button>
+       <button> Tutorial</button>
 
        </div>
       </div>

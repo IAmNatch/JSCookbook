@@ -172,7 +172,7 @@ form input {
 
 .front-page-header {
 	font-family: Georgia, Times, "Times New Roman", serif;
-	font-size: 44.5714px;
+	font-size: 44.4px;
 	color: black;
 	letter-spacing: 14px;
 	
@@ -191,7 +191,7 @@ form input {
 	margin-top:20%;
 	color: white;
 	margin: auto;
-	margin-top:20%;
+	margin-top:15%;
 
 }
 .title-logo h1 {
@@ -209,8 +209,45 @@ body {
 	cursor: pointer;
 }
 
-.cookbook-holder {
+.title {
+	width: 580px;
 	float: left;
-	width:20%;
-	margin-left:10px;
+}
+.cookbook-holder {
+	width: 500px;
+	float: right;
+	vertical-align: bottom;
+}
+
+.cookbook-holder div.book, .cookbook-holder div.gloves {
+float: left;
+width: 200px;
+padding-top: 28px;
+}	
+
+.title p {
+	margin: 0;
+	padding: 0;
+	color: black;
+	font-size: 23px;
+
+}
+
+.title-logo button{
+border: none;
+background-color: rgb(228, 190, 108);
+margin: 3px;
+border: solid thin black;
+padding: 12px;
+margin-top: 30px;
+padding-left: 19px;
+padding-right: 19px;
+font-size: 17px;
+text-transform: uppercase;
+}
+.title-logo button:focus {
+	outline: none;
+}
+.title-logo button:hover {
+	border: 2px solid black;
 }
