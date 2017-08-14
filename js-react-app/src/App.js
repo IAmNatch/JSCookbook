@@ -20,6 +20,7 @@ class Home extends Component {
        <div className="cookbook-holder">
        <img src="cookbook.svg" />
        </div>
+
        </div>
       </div>
     );
