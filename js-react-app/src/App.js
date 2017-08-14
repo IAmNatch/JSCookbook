@@ -6,8 +6,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <h1> FORM THAT LOGS TO THE CONSOLE</h1>
-       <Form />
+       <Home />
+      </div>
+    );
+  }
+}
+class Home extends Component {
+  render() {
+    return (
+      <div className="hello">
+        <div className="title-logo">
+       <h1> <span className="front-page-header"><i>JavaScript </i></span><br /><span className="header-title">  COOKBOOK</span></h1>
+       <div className="cookbook-holder">
+       <img src="cookbook.svg" />
+       </div>
+       </div>
       </div>
     );
   }
