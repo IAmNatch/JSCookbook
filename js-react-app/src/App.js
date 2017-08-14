@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-       <Home />
+       <Form />
       </div>
     );
   }
@@ -57,6 +58,7 @@ handleChange(event) {
   
   this.setState({formValues})
   console.log(this.state.formValues["event-type"] )
+
 }
 
 
@@ -105,6 +107,9 @@ handleChange(event) {
 handleSubmit(event) {
     event.preventDefault();
     console.log(this.state.formValues);
+    axios.post('http://localhost:8080/generate', {
+      
+    })
 }
 
 render(){
@@ -190,8 +195,7 @@ class Tooltip extends React.Component {
       <br />
         <label style={{display: this.state.formValues["target-id-class"] &&  this.state.formValues["event-type"] === 'tooltip'  && this.state.formValues["type"] != 'dropdown' ? 'inline-block' : 'none' }}> How would you like to make is disapear:
         	<select name="disapaer" value={this.state.formValues["disapaer"]} onChange={this.handleChange.bind(this)}>
-			
-    			<option value="do-not-submit" > options</option>
+    			<option value="do-not-submit"> options</option>
 						<option value="opacity">opacity</option>
 						<option value="dislay: none">dislay: none</option>
 					</select>
