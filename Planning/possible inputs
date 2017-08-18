@@ -1,5 +1,5 @@
         ToolTip Popups
-// node server.js tooltip popup toggle "#tt-trigger1" "#tt-target1" display block
+// node server.js 1. tooltip 2. popup 3. toggle "#tt-trigger1" "#tt-target1" trigger 4. display block
 // node server.js tooltip popup singeClick "#tt-trigger1" "#tt-target1" display block
 // node server.js tooltip popup hover "#tt-trigger2" "#tt-target2" display block
 // node server.js tooltip popup scroll "#tt-trigger3" "#tt-target3" display block 100 180
@@ -17,7 +17,7 @@
 // node server.js css add toggle "#class-target1" "#class-target1" "drop-shadow"
 // node server.js css add singleClick "#class-target1" "#class-target1" "drop-shadow"
 // node server.js css add hover "#class-target1" "#class-target1" "drop-shadow"
-// node server.js css add scroll "#class-target1" "#class-target1" "drop-shadow" "" 300 400
+// node server.js 1. css 2. add 3. scroll "#class-target1" "#class-target1" 300, 400, 5 "drop-shadow"
 // node server.js css remove toggle "#class-target1" "#class-target1" "drop-shadow"
 // node server.js css remove singleClick "#class-target1" "#class-target1" "drop-shadow"
 // node server.js css remove hover "#class-target1" "#class-target1" "drop-shadow"

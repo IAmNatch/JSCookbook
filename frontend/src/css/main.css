@@ -1,0 +1,106 @@
+.form > .label, .form > div {
+    display: inline;
+
+}
+
+/* Main Canvas */
+.ant-layout-content {
+    top: 64px;
+    position: relative;
+}
+
+.exit {
+    position: absolute;
+    left: 43px;
+    font-size: 30px;
+    bottom: -66px;
+    padding: 5px;
+    color: rgba(240, 65, 52, 0.57);
+}
+
+.question {
+    color: #108ee9;
+}
+
+.formBox .question, .formBox label, .formBox Input {
+    margin-bottom: 10px;
+    display: inline;
+}
+
+.formBox .questionBox {
+    display: block;
+}
+
+
+.questionBox {
+    margin: 10px 0px;
+}
+
+.questionBox * {
+    font-size: 18px;
+}
+
+.formBox Input {
+    width: 150px;
+    margin-left: 10px;
+    height: 25px;
+}
+
+.new-form {
+    font-size: 30px;
+    margin: 20px;
+}
+
+.check-mark {
+    position: absolute;
+    right: 15px;
+    font-size: 30px;
+    bottom: 15px;
+}
+
+div > label {
+    display: block;
+}
+
+.question {
+    display: inline;
+}
+
+.ant-card {
+    margin: 10px;
+
+}
+
+.card-number {
+    font-size: 22px;
+    margin-top: -20px;
+    color: rgba(128, 128, 128, 0.2);
+    display: inline-block !important;
+}
+
+/* Question Modals */
+.modal {
+    text-align: center;
+}
+
+.model Button {
+    margin: 20px;
+}
+
+.ant-modal-body {
+    display: flex;
+    justify-content: space-around;
+}
+.ant-modal-body Button {
+
+}
+
+.ant-modal-footer :nth-child(2)  {
+    display: none;
+}
+
+Button .submit-me {
+    position: absolute;
+    right: 10px;
+    bottom: 430px;
+}

@@ -12,6 +12,7 @@ class App extends Component {
     );
   }
 }
+
 class Home extends Component {
   render() {
     return (
@@ -55,7 +56,7 @@ handleChange(event) {
   let value = event.target.value;
 
   formValues[name] = value;
-  
+
   this.setState({formValues})
   console.log(this.state.formValues["event-type"] )
 
@@ -67,7 +68,7 @@ handleChange(event) {
       <div className="App">
     <form className="nl-form">
           <label>
-          What are are you trying to create: 
+          What are are you trying to create:
           <select  name="event-type" value={this.state.formValues["event-type"]} onChange={this.handleChange.bind(this)}>
             <option value="do-not-submit">  my event</option>
             <option value="tooltip"> tooltip</option>
@@ -97,26 +98,23 @@ handleChange(event) {
     let formValues = this.state.formValues;
     let name = event.target.name;
     let value = event.target.value;
-  
+
     formValues[name] = value;
-    
+
     this.setState({formValues})
-    console.log(this.state.formValues["event-type"] )
+    console.log(this.state.formValues['event-type'] );
 }
 
 handleSubmit(event) {
     event.preventDefault();
     console.log(this.state.formValues);
-    axios.post('http://localhost:8080/generate', {
-      
-    })
 }
 
 render(){
   return (
     <form onSubmit={this.handleSubmit.bind(this)} className="nl-form">
         <label>
-        What are are you trying to create: 
+        What are are you trying to create:
         </label>
       <br />
       <button className="nl-submit" type="submit">submit</button>
@@ -126,36 +124,48 @@ render(){
 }
 
 class Tooltip extends React.Component {
-  constructor(props) {
-      super(props)
-      this.state = {
-          formValues: {}
-      }
+    constructor(props) {
+          super(props)
+          this.state = {
+              formValues: {}
+          }
 
-  }
+    }
 
-  handleChange(event) {
-      event.preventDefault();
-      let formValues = this.state.formValues;
-      let name = event.target.name;
-      let value = event.target.value;
-    
-      formValues[name] = value;
-      
-      this.setState({formValues})
-      console.log(this.state.formValues["event-type"] )
-  }
-  
-  handleSubmit(event) {
-      event.preventDefault();
-      console.log(this.state.formValues);
-  }
-  
+    handleChange(event) {
+          event.preventDefault();
+          let formValues = this.state.formValues;
+          let name = event.target.name;
+          let value = event.target.value;
+
+          formValues[name] = value;
+
+          this.setState({formValues})
+          console.log(this.state.formValues["event-type"] )
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log(this.state.formValues);
+        let stringified = JSON.stringify(this.state.formValues);
+        console.log(stringified);
+
+        axios.post('http://localhost:8080/generate', {text: this.state})
+            .then(res => {
+                    console.log(res)
+            })
+            .catch(err => {
+                    console.log(err)
+            })
+
+    }
+
+
   render(){
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="nl-form">
           <label>
-          What are are you trying to create: 
+          What are are you trying to create:
           <select  name="event-type" value={this.state.formValues["event-type"]} onChange={this.handleChange.bind(this)}>
             <option value="do-not-submit">  my event</option>
             <option value="tooltip"> tooltip</option>
@@ -164,7 +174,7 @@ class Tooltip extends React.Component {
           </select>
       </label>
       <br />
-        <label style={{display: this.state.formValues["event-type"] === 'tooltip' ? 'inline-block' : 'none' }}> What type of tooltip are you trying to create? 
+        <label style={{display: this.state.formValues["event-type"] === 'tooltip' ? 'inline-block' : 'none' }}> What type of tooltip are you trying to create?
           <select name="type"  value={this.state.formValues["type"]} onChange={this.handleChange.bind(this)}>
             <option value="do-not-submit">type</option>
             <option value="popups">popup</option>
@@ -183,13 +193,13 @@ class Tooltip extends React.Component {
         </label>
       <br />
         <label style={{display: this.state.formValues["trigger"] &&  this.state.formValues["event-type"] === 'tooltip' ? 'inline-block' : 'none' }}>
-          What is your TRIGGER ID or Class: 
+          What is your TRIGGER ID or Class:
           <input type="text" name="trigger-id-class"  value={this.state.formValues["trigger-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
         <br />
-      
+
         <label style={{display: this.state.formValues["trigger-id-class"] &&  this.state.formValues["event-type"] === 'tooltip'? 'inline-block' : 'none' }}>
-          What is your TARGET ID or Class: 
+          What is your TARGET ID or Class:
           <input type="text" name="target-id-class" value={this.state.formValues["target-id-class"]} onChange={this.handleChange.bind(this)} />
       </label>
       <br />
