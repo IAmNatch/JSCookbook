@@ -7,17 +7,18 @@ let tooltip = {
         const trigger = inputObject.input.triggerID;
         const target = inputObject.input.targetID;
 
-        if (inputObject.input.functionSubType === 'popup') {
+        if (inputObject.input.functionSubType === 'tooltip') {
             console.log('popup ran!');
-            const invisType = inputObject.generalParam;
+            const invisType = inputObject.input.invisType;
             if (invisType === 'display') {
                 //Testing
                 console.log('display ran!');
                 //Code
-                let stateSelection = inputObject.input[6]
+                let stateSelection = inputObject.input.displayType;
                 const firstF = `let stateSelection = "` + stateSelection + `";
                                 $("` + target + `").css("display", stateSelection);`;
                 const secondF =`$( "` + target + `" ).css('display', 'none');`;
+                console.log("first F is " + firstF);
                 let output = [firstF, secondF];
                 return output;
             }

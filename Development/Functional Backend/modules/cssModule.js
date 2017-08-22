@@ -2,7 +2,7 @@ let cssFunctions = {
 
     cssGenerator(inputObject) {
         //Testing
-        console.log('css module ran!');
+        console.log(inputObject);
         // Code
         const trigger = inputObject.input.triggerID;
         const target = inputObject.input.targetID;

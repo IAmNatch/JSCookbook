@@ -6,8 +6,8 @@ let updateText = {
         const trigger = inputObject.input.triggerID;
         const target = inputObject.input.targetID;
 
-        if (inputObject.input.functionSubType === "add") {
-            let newText = inputObject.input.generalParam;
+        if (inputObject.input.functionType === "updateText") {
+            let newText = inputObject.input.updatedText;
             let firstF = `let newText = "` + newText + `";
             $("` + target +`").text(newText);`;
             let secondF = `$( "` + target +`" ).text(ogText);`;
@@ -15,6 +15,9 @@ let updateText = {
 
             let output = [firstF, secondF, whenLoad];
             return output;
+        }
+        else {
+            console.log("You're in the the update text module without an updateText function!");
         }
     }
 

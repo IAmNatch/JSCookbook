@@ -4,6 +4,10 @@ import './css/main.css';
 
 //Gives App the ability to have onpage links
 import {Link} from 'react-router';
+import {browserHistory} from "react-router";
+
+//Import auth0
+import { getAccessToken } from './utils/AuthService';
 
 // Import AntDesign Components
 import Modal from 'antd/lib/modal'
@@ -15,6 +19,7 @@ import Card from 'antd/lib/card'
 const Option = Select.Option;
 //Import Request
 var request = require('request');
+const FileSaver = require('file-saver');
 
 
 class Main extends React.Component {
@@ -68,19 +73,33 @@ let modalContent = {
             targetID: 'What is your targets ID or Class',
             triggerParam: 'Where will your scroll start?',
             triggerParamTwo: 'When will your scroll end? (Optional)',
-            generalParam: 'What is the name of the class you would like to update?'
+            generalParam: 'What is the name of the class you would like to update?',
+            invisType: 'How would you like to make your form invisible?',
+            displayType: 'What is your desired display type when the element is visible'
         },
     wQuestion:
         {
             functionType: ['Tooltipping and Custom Dropdowns', 'Add/Remove CSS Classes', 'UpdateText'],
             functionSubType: {tooltip: ['Tooltipping', 'Dropdown'], css: ['Add', 'Remove'], updateText: ['Add'] },
-            triggerType: ['Click', 'clickToggle', 'Hover', 'Scroll']
+            triggerType: ['Click', 'clickToggle', 'Hover', 'Scroll'],
+            invisType: ['Display: None', 'Opacity: 0'],
+            displayType: ['Display: Block', 'Display: Inline-Block', 'Display: Inline', 'Display: Flex']
         },
     wAnswer:
         {
             functionType: ['tooltip', 'css', 'updateText'],
-            functionSubType: {tooltip: ['tooltip', 'dropdown'], css: ['add', 'remove'], updateText: ['add']},
-            triggerType: ['click', 'clickToggle', 'hover', 'scroll']
+            functionSubType: {tooltip: ['tooltip', 'dropdown'], css: ['add', 'remove'], updateText: ['updateText']},
+            triggerType: ['click', 'clickToggle', 'hover', 'scroll'],
+            invisType: ['display', 'opacity'],
+            displayType: ['block', 'inline-block', 'inline', 'flex']
+        },
+    wDisplayedAnswer:
+        {
+            functionType: ['create a popop or dropdown', 'css', 'updateText'],
+            functionSubType: {tooltip: ['making a popup', 'make a dropdown'], css: ['add CSS', 'remove CSS'], updateText: ['update text']},
+            triggerType: ['click', 'clickToggle', 'hover', 'scroll'],
+            invisType: ['display', 'opacity'],
+            displayType: ['block', 'inline-block', 'inline', 'flex']
         }
 };
 
@@ -105,7 +124,7 @@ class Form extends React.Component {
         let currentModal = "visible" + parent.dataset.id;
         let currentForm = parent.dataset.id;
         let currentQuestion = e.target.dataset.questiontype;
-
+        console.log(currentQuestion);
         // Button Reset
         modalButtons = []
 
@@ -235,11 +254,29 @@ class Form extends React.Component {
 
     onSubmit() {
         console.log(this.state.output);
-        request.post({url:'http://localhost:8080/generate', form: this.state.output}, function (error, response, body) {
+        let options = {
+            url: 'http://localhost:8080/generate',
+            headers: {
+                Authorization: `Bearer ${getAccessToken()}`
+            },
+            form: this.state.output
+        }
+
+        request.post(options, function (error, response, body) {
             console.log('error:', error); // Print the error if one occurred
             console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             console.log('body:', body); // Print the HTML for the Google homepage.
+            // window.location.href = responseFile.file;
+            if (response.statusCode !== (401 || 404)) {
+                var blob = new Blob([body], {type: "text/plain;charset=utf-8"});
+                FileSaver.saveAs(blob, 'output.js');
+            } else {
+                alert('You\'re not authorized to access this file! Please log in and try again!');
+            }
+
         });
+
+
     }
 
     render() {
@@ -323,6 +360,32 @@ class Form extends React.Component {
                                                         data-questionType="cssClassName"
                                                         onChange={(e) => {this.onInput(e, this[currentFormRef])}}
                                                     ></Input>
+                                                </div>
+                                            );
+                                        }
+                                        else if (this.state.output[currentOutput].functionSubType === "tooltip") {
+                                            return (
+                                                <div>
+                                                    <div className='questionBox' style={this.state.output[currentOutput] ? this.state.output[currentOutput].functionSubType ? {} : {display: 'none'} : {display: 'none'}}>
+                                                        <label>I'd like to make invisible via </label>
+                                                        <div
+                                                            className="question"
+                                                            data-questionType="invisType"
+                                                            onClick={(e) => {this.showModal(e, this[currentFormRef])} }
+                                                        >
+                                                            {this.state.output[currentOutput]  ? this.state.output[currentOutput].invisType? this.state.output[currentOutput].invisType : 'select an option' : 'select an option'}
+                                                        </div>
+                                                    </div>
+                                                    <div className='questionBox' style={this.state.output[currentOutput] ? (this.state.output[currentOutput].invisType === 'display') ? {} : {display: 'none'} : {display: 'none'}}>
+                                                        <label>I'd like my tooltip to have a display value of </label>
+                                                        <div
+                                                            className="question"
+                                                            data-questionType="displayType"
+                                                            onClick={(e) => {this.showModal(e, this[currentFormRef])} }
+                                                        >
+                                                            {this.state.output[currentOutput]  ? this.state.output[currentOutput].displayType ? this.state.output[currentOutput].displayType : 'select an option' : 'select an option'}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             );
                                         }
@@ -423,17 +486,54 @@ class Form extends React.Component {
             forms.push(formHTML);
         }
 
-        let submit = (<Button className='submit-me'
-            onClick={() => {this.onSubmit()}}
-            style={{
-                float: 'right',
-                marginTop: '20px',
-                marginRight: '20px'
-            }}
-            type="primary"
-            disabled={this.submitButtonLogic}>
-            <span>Submit</span><Icon type="right" />
-        </Button>);
+        // Makes submit a JSX Object
+        let submit = (<h1 />)
+        {(() => {
+            let submitOFF = (<Button className='submit-me'
+                onClick={() => {this.onSubmit()}}
+                style={{
+                    float: 'right',
+                    marginTop: '20px',
+                    marginRight: '20px'
+                }}
+                type='primary'
+                disabled='true'
+                >
+                    <span>Submit</span><Icon type="right" />
+                </Button>);
+            let submitON = (<Button className='submit-me'
+                onClick={() => {this.onSubmit()}}
+                style={{
+                    float: 'right',
+                    marginTop: '20px',
+                    marginRight: '20px'
+                }}
+                type='primary'
+                disabled={false}
+                >
+                <span>Submit</span><Icon type="right" />
+                </Button>);
+
+
+            if (this.state.output) {
+                if (this.state.output['s' + (this.props.numberOfForms-1)] !== undefined) {
+                    if(this.state.output['s' + (this.props.numberOfForms-1)].targetID !== undefined) {
+                        submit = submitON;
+                        console.log('Good to go, captain.');
+                    }
+                    else {
+                        submit = submitOFF;
+                    }
+                }
+                else {
+                    submit = submitOFF;
+                }
+            }
+            else {
+                submit = submitOFF;
+            }
+
+        })()}
 
         forms.push(submit)
 

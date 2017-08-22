@@ -1,5 +1,6 @@
 const trigger = require('./triggerProcessor');
-const exporter = require('./modules/dotJSMaker');
+
+
 
 // Old input Object
 // let inputObj = {
@@ -12,23 +13,21 @@ const exporter = require('./modules/dotJSMaker');
 
 let inputProcessor = {
     inputProcessor (inputArray) {
-        // Loops through all of the input sets, starting the code building process once per a input set.
-        let outputArray = [];
+        console.log("INPUT PROCESSOR RAN");
+        console.log(inputArray);
+        //Creates Array of inputs -- This will be removed once we're using a more complex object for communication
+        let toTrigger = {
+            repeatCheck : {
+                toggleClick: false
+            },
+            input : inputArray};
+        // Run trigger Processor and put it's result to outputArray
+        console.log("To Trigger Bellow");
+        console.log(toTrigger.input);
+        let output = [];
+        output.push(trigger.triggerProcessor(toTrigger));
 
-        for (let i = 0; i < inputArray.length; i++) {
-            //Creates Array of inputs -- This will be removed once we're using a more complex object for communication
-            let toTrigger = {
-                repeatCheck : {
-                    toggleClick: false
-                },
-                input : inputArray[i]};
-            // Run trigger Processor and put it's result to outputArray
-            console.log(toTrigger.input);
-            outputArray.push(trigger.triggerProcessor(toTrigger));
-        }
-        console.log('Passing output array into Maker!');
-        exporter.dotJSMaker(outputArray);
-
+        return output;
     }
 };
 

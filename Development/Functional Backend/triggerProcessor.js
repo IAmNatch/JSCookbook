@@ -22,11 +22,11 @@ let triggerProcessor = {
         // Code
         let outputCode = '';
 
-        if (inputObject.input.triggerType === 'toggle') {
+        if (inputObject.input.triggerType === 'clickToggle') {
             outputCode = trigger.toggle(inputObject);
             return outputCode;
         }
-        else if (inputObject.input.triggerType === 'singleClick') {
+        else if (inputObject.input.triggerType === 'click') {
             outputCode = trigger.singleClick(inputObject);
             return outputCode;
         }
