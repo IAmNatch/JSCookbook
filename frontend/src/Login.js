@@ -57,7 +57,7 @@ class Login extends React.Component {
                     body = JSON.parse(body)
 
                     let options = {
-                        url: 'http://myjscookbook.com/userInfo/' + body.sub,
+                        url: 'http://localhost:8080/userInfo/' + body.sub,
                         headers: {
                             Authorization: `Bearer ${getAccessToken()}`
                         }

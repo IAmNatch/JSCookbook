@@ -35,7 +35,7 @@ class Documents extends React.Component {
         bodyString = JSON.stringify(bodyString)
         console.log(bodyString)
         let options = {
-            url: 'http://myjscookbook.com/userInfo/' + this.props.currentUser,
+            url: 'http://localhost:8080/userInfo/' + this.props.currentUser,
             headers: {
                 Authorization: `Bearer ${getAccessToken()}`,
                 "Content-Type": "application/json"

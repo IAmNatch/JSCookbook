@@ -108,7 +108,7 @@ class App extends Component {
                 this.setState({currentUser: body.sub, name: body.name})
 
                 let options = {
-                    url: 'http://myjscookbook.com/userInfo/' + body.sub,
+                    url: 'http://localhost:8080/userInfo/' + body.sub,
                     headers: {
                         Authorization: `Bearer ${getAccessToken()}`
                     }
