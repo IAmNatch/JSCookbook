@@ -6,9 +6,9 @@ const ACCESS_TOKEN_KEY = 'access_token';
 
 const CLIENT_ID = '6pONvfOzTQB4bNb1XDOB02mvc1M3WpaE';
 const CLIENT_DOMAIN = 'shanerobbins.auth0.com';
-const REDIRECT = 'http://localhost:3000/callback';
+const REDIRECT = 'http://myjscookbook.com/callback';
 const SCOPE = 'openid email profile';
-const AUDIENCE = 'localhost:8080';
+const AUDIENCE = 'myjscookbook.com:8080';
 
 var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,

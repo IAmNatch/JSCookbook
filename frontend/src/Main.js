@@ -281,7 +281,7 @@ class Form extends React.Component {
     onSubmit() {
         console.log(this.state.output);
         let options = {
-            url: 'http://localhost:8080/generate',
+            url: 'http://myjscookbook.com:8080/generate',
             headers: {
                 Authorization: `Bearer ${getAccessToken()}`
             },
@@ -338,7 +338,7 @@ class Form extends React.Component {
             console.log('bodyString');
             console.log(bodyString);
             let options = {
-                url: 'http://localhost:8080/userInfo/' + this.props.currentUser,
+                url: 'http://myjscookbook.com:8080/userInfo/' + this.props.currentUser,
                 headers: {
                     Authorization: `Bearer ${getAccessToken()}`,
                     "Content-Type": "application/json"
