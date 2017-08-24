@@ -45,3 +45,10 @@
 #title {
     display: inline;
 }
+
+.sidebarName {
+    font-size: 15px;
+    color: #FFFFFF;
+    line-height: 0px;
+    margin-bottom: 90px;
+}

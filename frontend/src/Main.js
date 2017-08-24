@@ -16,6 +16,7 @@ import Icon from 'antd/lib/icon'
 import Select from 'antd/lib/select'
 import Input from 'antd/lib/input'
 import Card from 'antd/lib/card'
+import message from 'antd/lib/message'
 const Option = Select.Option;
 //Import Request
 var request = require('request');
@@ -31,6 +32,7 @@ class Main extends React.Component {
 
         this.newFormClick = this.newFormClick.bind(this);
         this.onCardDelete = this.onCardDelete.bind(this);
+        this.clearDocument = this.clearDocument.bind(this);
     }
 
     newFormClick() {
@@ -47,14 +49,37 @@ class Main extends React.Component {
         this.setState({numberOfForms: newNumber})
     }
 
+    setCurrentFile(e, fileName, file) {
+        console.log('I ran!');
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.outputFromApp) {
+            let numberForms = Object.keys(this.props.outputFromApp).length
+            console.log('there was a change!');
+            console.log(numberForms);
+            this.setState({'numberOfForms': numberForms})
+        }
+    }
+
+    clearDocument() {
+        this.props.clearDocument();
+        this.setState({numberForms: 1})
+        console.log('main level cleared');
+    }
+
+    componentDidMount() {
+        this.props.currentPage('main')
+        this.props.dataUpdate();
+    }
+
     render() {
-
-
         return(
             <div id='main'>
-                <Form onCardDelete={() => {this.onCardDelete()}} numberOfForms={this.state.numberOfForms} />
+                <Form ref={(Form) => { this.mainForm = Form; }} onCardDelete={() => {this.onCardDelete()}} updateNumberOfForms={this.updateNumberOfForms} clearDocument={this.clearDocument} currentDocument={this.props.currentDocument} outputFromApp={this.props.outputFromApp} userData={this.props.userData} currentUser={this.props.currentUser} setUserData={this.props.setUserData} docTitle={this.props.docTitle} numberOfForms={this.state.numberOfForms} dataUpdate={this.props.dataUpdate} />
                 <NewFormButton newFormClick={() => this.newFormClick()} />
             </div>
+
         );
     }
 
@@ -117,6 +142,7 @@ class Form extends React.Component {
         this.fourthQLogic = this.fourthQLogic.bind(this);
         this.submitLogic = this.submitLogic.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.clearDocument = this.clearDocument.bind(this);
     }
 
     showModal(e, parent) {
@@ -255,12 +281,12 @@ class Form extends React.Component {
     onSubmit() {
         console.log(this.state.output);
         let options = {
-            url: 'http://localhost:8080/generate',
+            url: 'http://myjscookbook.com/generate',
             headers: {
                 Authorization: `Bearer ${getAccessToken()}`
             },
             form: this.state.output
-        }
+        };
 
         request.post(options, function (error, response, body) {
             console.log('error:', error); // Print the error if one occurred
@@ -271,16 +297,84 @@ class Form extends React.Component {
                 var blob = new Blob([body], {type: "text/plain;charset=utf-8"});
                 FileSaver.saveAs(blob, 'output.js');
             } else {
-                alert('You\'re not authorized to access this file! Please log in and try again!');
+                message.error('You\'re not authorized to access this file! Please log in and try again!');
             }
 
         });
 
+    }
+
+    saveDocument() {
+        console.log(this.props.userData);
+        if(this.props.docTitle === ('Project Title' || '')) {
+            message.error('Please set a document title before saving!');
+        }
+        else {
+            (function(){
+                if (sessionStorage.getItem('userData') === null || sessionStorage.getItem('userData') === 'undefined') {
+                        sessionStorage.setItem('userData', '{"documents": ""}')
+                }
+            })();
+
+            let currentUserData = sessionStorage.getItem('userData')
+            currentUserData = JSON.parse(currentUserData);
+            console.log(currentUserData);
+            if (!currentUserData) {
+                currentUserData = {
+                    documents: {[this.props.docTitle]: this.state.output}
+                }
+            }
+            if (!currentUserData.documents) {
+                currentUserData.documents = {
+                    [this.props.docTitle]: this.state.output
+                }
+            } else {
+                currentUserData.documents[this.props.docTitle] = this.state.output;
+            }
+
+            console.log(currentUserData);
+            let bodyString = {user_metadata: currentUserData}
+            bodyString = JSON.stringify(bodyString);
+            console.log('bodyString');
+            console.log(bodyString);
+            let options = {
+                url: 'http://myjscookbook.com/userInfo/' + this.props.currentUser,
+                headers: {
+                    Authorization: `Bearer ${getAccessToken()}`,
+                    "Content-Type": "application/json"
+
+                },
+                body: bodyString
+            };
+            request.patch(options, (error, response, body) => {
+                console.log('Updating Auth0 With New Document');
+                console.log('error:', error); // Print the error if one occurred
+                console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+                console.log('body:', body); // Print the HTML for the Google ho
+                message.success('Your file has been saved!')
+            })
+        }
 
     }
 
-    render() {
+    clearDocument (e) {
+        this.props.clearDocument();
+        this.setState({output: {}});
+    }
 
+    componentWillReceiveProps(nextProps) {
+        console.log('Component Recieved props');
+        if (this.props.currentDocument && this.props.currentDocument !== 'newDocument') {
+            this.setState({
+                output: this.props.outputFromApp,
+                docTitle: this.props.currentDocument,
+            });
+        }
+    }
+
+    render() {
+        console.log(this.props.currentDocument);
+        console.log(this.props.outputFromApp);
         let forms = [];
 
         for (let i = 0; i < this.props.numberOfForms; i++) {
@@ -299,6 +393,7 @@ class Form extends React.Component {
 
             let formHTML = (
                 <div>
+                    <Button type='dashed' className='new-document' onClick={this.clearDocument}>New Document</Button>
                     <Card>
                         <div className='formBox' key={i} data-id={i} ref={(element) => this[currentFormRef] = element}>
                             <Icon className='exit' type="minus-circle" style={((i+1) === this.props.numberOfForms && i !== 0) ? {} : {display: 'none'}} onClick={(e) => {this.onCardDelete(e, this[currentFormRef], currentOutput)}}/>
@@ -325,6 +420,7 @@ class Form extends React.Component {
                                                 <div className='questionBox'>
                                                     <label>My updated text is</label>
                                                     <Input
+                                                        value={this.state.output[currentOutput] ? this.state.output[currentOutput].updatedText : ''}
                                                         data-questionType="updatedText"
                                                         onChange={(e) => {this.onInput(e, this[currentFormRef])}}
                                                     ></Input>
@@ -359,6 +455,7 @@ class Form extends React.Component {
                                                     <Input
                                                         data-questionType="cssClassName"
                                                         onChange={(e) => {this.onInput(e, this[currentFormRef])}}
+                                                        value={this.state.output[currentOutput].cssClassName}
                                                     ></Input>
                                                 </div>
                                             );
@@ -433,6 +530,7 @@ class Form extends React.Component {
                                 <div className='questionBox' style={this.state.output[currentOutput] ? (this.state.output[currentOutput].triggerType === 'scroll') ? {} : {display: 'none'} : {display: 'none'}}>
                                     <label>My scroll will start at (px value)</label>
                                     <Input
+                                        value={this.state.output[currentOutput] ? this.state.output[currentOutput].scrollStart : ''}
                                         data-questionType="scrollStart"
                                         onChange={(e) => {this.onInput(e, this[currentFormRef])}}
                                     ></Input>
@@ -440,6 +538,7 @@ class Form extends React.Component {
                                     <label>My scroll will end at (px value) (if no end type none)</label>
 
                                     <Input
+                                        value={this.state.output[currentOutput] ? this.state.output[currentOutput].scrollEnd : ''}
                                         data-questionType="scrollEnd"
                                         onChange={(e) => {this.onInput(e, this[currentFormRef])}}
                                     ></Input>
@@ -448,6 +547,7 @@ class Form extends React.Component {
                                 <div className='questionBox' style={fourthQuestionLogic ? {} : {display: 'none'}} >
                                     <label>My trigger's ID or CSS is</label>
                                     <Input
+                                        value={this.state.output[currentOutput] ? this.state.output[currentOutput].triggerID : ''}
                                         style={{width: '185px'}}
                                         data-questionType="triggerID"
                                         onChange={(e) => {this.onInput(e, this[currentFormRef], this[currentInputRef]);}}
@@ -457,6 +557,7 @@ class Form extends React.Component {
                                 <div className='questionBox' style={this.state.output[currentOutput] ? this.state.output[currentOutput].triggerID ? {} : {display: 'none'} : {display: 'none'}}>
                                     <label>My target's ID or CSS is </label>
                                     <Input
+                                        value={this.state.output[currentOutput] ? this.state.output[currentOutput].targetID : ''}
                                         data-questionType="targetID"
                                         onChange={(e) => {this.onInput(e, this[currentFormRef])}}
                                         style={{width: '185px'}}
@@ -501,18 +602,28 @@ class Form extends React.Component {
                 >
                     <span>Submit</span><Icon type="right" />
                 </Button>);
-            let submitON = (<Button className='submit-me'
-                onClick={() => {this.onSubmit()}}
-                style={{
-                    float: 'right',
-                    marginTop: '20px',
-                    marginRight: '20px'
-                }}
-                type='primary'
+            let submitON = (
+                <div>
+                <Button className='submit-me'
+                    onClick={() => {this.onSubmit()}}
+                    style={{
+                        float: 'right',
+                        marginTop: '20px',
+                        marginRight: '20px'
+                    }}
+                    type='primary'
                 disabled={false}
                 >
                 <span>Submit</span><Icon type="right" />
-                </Button>);
+                </Button>
+                <Button onClick={() => {this.saveDocument()}} style={{
+                    float: 'right',
+                    marginTop: '20px',
+                    marginRight: '20px'
+                }} >
+                    Save Document
+                </Button>
+            </div>);
 
 
             if (this.state.output) {

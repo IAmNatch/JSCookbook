@@ -19,11 +19,10 @@ import registerServiceWorker from './registerServiceWorker';
 //React Render and Routing
 ReactDOM.render(
     <Router history={browserHistory}>
-        <IndexRoute component={Login} />
-        <Route path="/login" component={Login} />
         <Route path="/" component={App}>
-            <IndexRoute component={Main} />
+            <IndexRoute component={Login} />
             <Route path="main" component={Main} />
+            <Route path='login' component={Login} />
             <Route path="documents" component={Documents} />
             <Route path="/callback" component={Callback} />
         </Route>

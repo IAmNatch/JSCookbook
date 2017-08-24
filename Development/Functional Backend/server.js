@@ -12,6 +12,9 @@ const exporter = require('./modules/dotJSMaker');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.static(__dirname + './../build'));
+
+const PORT = process.env.PORT || 8080;
 
 const storage = {
     access_token: null,
@@ -102,7 +105,7 @@ app.use((req, res, next)=>{
 });
 
 // Starts Up
-app.listen(8080, function() {
+app.listen(PORT, function() {
     console.log('Server is running on port 8080! Fk Yea!');
 });
 
@@ -154,11 +157,48 @@ app.get('/userInfo/:userID', authCheck, (req, res) => {
             }
             else {
                 res.send(body)
+                console.log('info sent back to frontend');
             }
         });
 
 
     });
+});
+
+app.patch('/userInfo/:userID', authCheck, (req, res) => {
+    getAccessToken((response) => {
+        let requestBody = req.body;
+        requestBody = JSON.stringify(requestBody)
+        console.log('request body below');
+        console.log(requestBody);
+        let options =
+        {
+            method: 'PATCH',
+            url: 'https://shanerobbins.auth0.com/api/v2/users/' + req.params.userID,
+            headers:
+                {
+                    authorization: ('Bearer ' + response.access_token),
+                    'content-type': 'application/json'
+                },
+            body: requestBody
+        };
+        request(options, function (error, response, body) {
+            if (error) {
+                console.log(error);
+                res.send(body)
+            }
+            else {
+                res.send(body);
+                console.log('info updated & sent back to frontend');
+                console.log('error: ' + error);
+                console.log('body: ' + body);
+            }
+        });
+    });
+});
+
+app.get('*', (req, res) => {
+    res.sendFile('index.html', {root: __dirname + './../build'});
 });
 
 // let serverInput = [{
